@@ -1,0 +1,57 @@
+---
+type Props = {
+  text: string;
+  onClass: string;
+  offClass: string;
+  className: string;
+};
+
+const { text, onClass, offClass, className } = Astro.props;
+---
+
+<blink-text
+  data-classname={className}
+  data-text={text}
+  data-onclass={onClass}
+  data-offclass={offClass}></blink-text>
+<script>
+  class BlinkText extends HTMLElement {
+    constructor() {
+      super();
+      const text = this.dataset.text!;
+      const onClass = this.dataset.onclass!;
+      const offClass = this.dataset.offclass!;
+      const className = this.dataset.classname!;
+
+      const baseNode = document.createElement("span");
+      baseNode.className = className;
+
+      const rng = Math.random;
+
+      const blinkText = () => {
+        const nodes = [];
+
+        for (const c of text) {
+          const new_node = baseNode.cloneNode() as HTMLSpanElement;
+          new_node.textContent = c;
+
+          if (rng() > 0.5) {
+            new_node.className += ` ${onClass}`;
+          } else {
+            new_node.className += ` ${offClass}`;
+          }
+
+          nodes.push(new_node);
+        }
+
+        this.replaceChildren(...nodes);
+      };
+
+      blinkText();
+
+      window.setInterval(blinkText, 500);
+    }
+  }
+
+  customElements.define("blink-text", BlinkText);
+</script>

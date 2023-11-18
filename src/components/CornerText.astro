@@ -1,0 +1,34 @@
+---
+type Props = {
+  name?: string;
+  className?: string;
+};
+
+const { name, className } = Astro.props;
+
+const spaces = " ".repeat(2);
+const title = ((name ?? "NAME HERE") + spaces).repeat(50);
+---
+
+<div class:list={["absolute overflow-clip max-w-full", className]}>
+  <span class="moving-text text-3xl w-max inline-block">
+    {title}
+  </span>
+</div>
+
+<style>
+  .moving-text {
+    animation: 20s infinite forwards spiiin;
+    animation-timing-function: linear;
+  }
+
+  @keyframes spiiin {
+    0% {
+      transform: translateX(-10%);
+    }
+
+    100% {
+      transform: translateX(10%);
+    }
+  }
+</style>
