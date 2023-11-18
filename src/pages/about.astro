@@ -9,7 +9,14 @@ import LayoutWithTransitions from "../layouts/LayoutWithTransitions.astro";
   >
     <div class="w-1/2 mx-auto">
       <div class="text-slate-400">
-        <p class="text-start text-highlight">ABOUT ME</p>
+        <div class="flex items-start">
+          <span
+            class="text-start text-3xl text-highlight"
+            transition:name="title"
+          >
+            About me
+          </span>
+        </div>
          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores
         dolorum doloremque neque reprehenderit maxime eligendi mollitia
         accusantium tenetur quisquam voluptate illum sunt alias iusto eius vero
@@ -43,7 +50,7 @@ import LayoutWithTransitions from "../layouts/LayoutWithTransitions.astro";
         cum.
       </div>
       <a
-        class="text-slate-600 text-2xl hover:underline decoration-highlight"
+        class="text-2xl hover:underline decoration-highlight text-regular-text"
         href={"../"}>go back</a
       >
     </div>

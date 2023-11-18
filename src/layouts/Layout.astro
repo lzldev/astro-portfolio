@@ -14,7 +14,7 @@ const { title } = Astro.props;
       <slot name="head" />
     </DefaultHeader>
   </head>
-  <body class="bg-background selection:bg-highlight-off">
+  <body class="bg-background relative bg-noise selection:bg-highlight-off">
     <slot />
   </body>
 </html>

@@ -14,14 +14,18 @@ const { href, title, body } = Astro.props;
 
 <Card>
   <a {href} class="flex justify-between px-4">
-    <span class="text-xl text-left font-bold font-mono">
+    <span
+      class="text-xl text-left font-bold font-mono group-hover/card:text-highlight"
+      transition:name="title"
+      transition:animate="slide"
+    >
       {title}
     </span>
     <Image
       src={arrow}
       alt="Arrow pointing right"
       width={16}
-      class="hover:stroke-white hover:fill-red-500 stroke-red-500 stroke-white"
+      class="fill-highlight"
     />
   </a>
 </Card>
