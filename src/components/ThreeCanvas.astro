@@ -1,0 +1,62 @@
+<script>
+  /*
+    This import is goofy so the bundlesize is smaller in the end.
+  */
+
+  import {
+    PerspectiveCamera,
+    WebGLRenderer,
+    Scene,
+    BufferGeometry,
+    Vector3,
+    PointsMaterial,
+    Points,
+    DynamicDrawUsage,
+    LineSegments,
+  } from "three";
+
+  //@ts-expect-error since the imported object is incomplete the Type is invalid.
+  window["THREE"] = {
+    PerspectiveCamera,
+    WebGLRenderer,
+    Scene,
+    BufferGeometry,
+    Vector3,
+    PointsMaterial,
+    Points,
+    DynamicDrawUsage,
+    LineSegments,
+  };
+
+  await import("../scripts/vanta.dots.min.js");
+
+  //@ts-expect-error Added via the script
+  VANTA.DOTS({
+    el: "#animation-root",
+    mouseControls: true,
+    touchControls: true,
+    gyroControls: false,
+    minHeight: 200.0,
+    minWidth: 200.0,
+    scale: 1.0,
+    scaleMobile: 1.0,
+    color: 0xfcb5c6,
+    color2: 0x73cce9,
+    backgroundColor: 0xfcb5c6,
+    size: 4.5,
+    showLines: false,
+  });
+
+  // Make the Canvas transparent
+  const canvas = document.getElementById("animation-root")
+    ?.lastChild as HTMLCanvasElement;
+  console.log(canvas);
+  const context = canvas.getContext("webgl2");
+  console.log(context);
+  const gl = canvas.getContext("webgl2")!;
+  console.log(gl);
+  gl.clearColor(0.0, 0.0, 0.0, 0.0);
+  gl.enable(gl.BLEND);
+  gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+  gl.clear(gl.COLOR_BUFFER_BIT);
+</script>

@@ -4,16 +4,16 @@ import CornerText from "../components/CornerText.astro";
 import StartCard from "../components/StartCard.astro";
 import LayoutWithTransitions from "../layouts/LayoutWithTransitions.astro";
 import BlinkingText from "../components/Preact/BlinkingText";
-import MovingFloaters from "../components/MovingFloaters.astro";
 ---
 
 <LayoutWithTransitions title="Portfolio">
   <main
+    id="thinghere"
     class="flex flex-col min-h-screen h-screen w-screen items-center justify-center relative overflow-clip"
   >
     <CornerText className="top-0 -right-1/3 rotate-45" />
     <div class="mt-auto"></div>
-    <div class="mx-auto gap-y-4 flex flex-col w-1/3 z-10">
+    <div class="mx-auto gap-y-4 flex flex-col w-1/3">
       <div class="text-left text-xl font-mono font-bold">
         <p class="text-highlight text-3xl">NAME HERE</p>
          TS Developer
@@ -27,9 +27,9 @@ import MovingFloaters from "../components/MovingFloaters.astro";
       </div>
       <StartCard title={"About me"} body="" href="/about" />
     </div>
-    <!-- <Projects /> -->
     <div class="mt-auto"></div>
     <LinksFooter class="pb-2" />
   </main>
+
   <!-- <div class="mt-auto"></div> -->
 </LayoutWithTransitions>

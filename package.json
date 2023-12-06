@@ -16,11 +16,15 @@
     "@preact/signals": "^1.2.2",
     "astro": "^4.0.2",
     "preact": "^10.19.2",
-    "tailwindcss": "^3.3.5",
+    "three": "^0.159.0",
     "typescript": "^5.2.2"
   },
   "devDependencies": {
+    "@types/three": "^0.159.0",
     "prettier": "^3.1.0",
-    "prettier-plugin-tailwindcss": "^0.5.7"
+    "prettier-plugin-tailwindcss": "^0.5.7",
+    "sharp": "^0.33.0",
+    "tailwindcss": "^3.3.6",
+    "terser": "^5.25.0"
   }
 }

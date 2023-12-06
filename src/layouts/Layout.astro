@@ -1,5 +1,6 @@
 ---
 import DefaultHeader from "../components/DefaultHeader.astro";
+import ThreeCanvas from "../components/ThreeCanvas.astro";
 interface Props {
   title: string;
 }
@@ -14,7 +15,18 @@ const { title } = Astro.props;
       <slot name="head" />
     </DefaultHeader>
   </head>
-  <body class="bg-background relative bg-noise selection:bg-highlight-off">
+  <body
+    id="root"
+    transition:persist
+    class="bg-background relative bg-noise selection:bg-highlight-off"
+  >
     <slot />
+    <div
+      class="fixed inset-0 min-h-screen w-full -z-50"
+      id="animation-root"
+      transition:persist="background"
+    >
+      <ThreeCanvas />
+    </div>
   </body>
 </html>
