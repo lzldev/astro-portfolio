@@ -1,7 +1,26 @@
 ---
-import SingleViewContainer from "../components/SingleViewContainer.astro";
-import LinksFooter from "../components/Footer/LinksFooter.astro";
-import LayoutWithTransitions from "../layouts/LayoutWithTransitions.astro";
+import SingleViewContainer from "../../components/SingleViewContainer.astro";
+import LinksFooter from "../../components/Footer/LinksFooter.astro";
+import LayoutWithTransitions from "../../layouts/LayoutWithTransitions.astro";
+import type { GetStaticPaths } from "astro";
+import { ui } from "../../i18n/ui";
+import {
+  useRelativeLocaleURL,
+  getLangFromUrl,
+  useTranslations,
+} from "../../i18n/utils";
+
+export const getStaticPaths = (() => {
+  return Object.keys(ui).map((lang) => ({
+    params: {
+      locale: lang,
+    },
+  }));
+}) satisfies GetStaticPaths;
+
+const getLink = useRelativeLocaleURL(Astro.url);
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <LayoutWithTransitions title="Welcome to Astro.">
@@ -13,7 +32,7 @@ import LayoutWithTransitions from "../layouts/LayoutWithTransitions.astro";
             class="text-start text-3xl text-highlight font-semibold"
             transition:name="title"
           >
-            About me
+            {t("nav.about")}
           </span>
         </div>
          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores
@@ -50,7 +69,7 @@ import LayoutWithTransitions from "../layouts/LayoutWithTransitions.astro";
       </div>
       <a
         class="text-2xl hover:underline decoration-highlight text-regularText"
-        href={"../"}>go back</a
+        href={"../"}>{t("nav.goBack")}</a
       >
     </div>
     <LinksFooter class="pb-2" />

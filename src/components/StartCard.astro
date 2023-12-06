@@ -4,23 +4,24 @@ import arrow from "../../public/arrow-right.svg";
 import { Image } from "astro:assets";
 
 interface Props {
-  title: string;
-  body: string;
+  title?: string;
   href: string;
 }
 
-const { href, title, body } = Astro.props;
+const { href, title, ...props } = Astro.props;
 ---
 
-<Card>
+<Card {...props}>
   <a {href} class="flex justify-between px-4">
-    <span
-      class="text-xl text-left font-bold font-mono group-hover/card:text-highlight"
-      transition:name="title"
-      transition:animate="slide"
+    <slot
+      ><span
+        class="text-xl text-left font-bold font-mono group-hover/card:text-highlight"
+        transition:name="title"
+        transition:animate="slide"
+      >
+        {title}
+      </span></slot
     >
-      {title}
-    </span>
     <Image
       src={arrow}
       alt="Arrow pointing right"

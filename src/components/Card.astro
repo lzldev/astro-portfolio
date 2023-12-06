@@ -3,7 +3,7 @@ interface Props {
   class?: string;
 }
 
-const { class: className, ...rest } = Astro.props;
+const { class: className, ...props } = Astro.props;
 ---
 
 <div
@@ -12,6 +12,7 @@ const { class: className, ...rest } = Astro.props;
     "bg-stone-400 text-neutral-600 ring-2 rounded-md ring-stone-700 p-2 group/card",
   ]}
   class=""
+  {...props}
 >
   <slot />
 </div>
