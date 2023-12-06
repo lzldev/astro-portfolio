@@ -4,23 +4,21 @@ import CornerText from "../components/CornerText.astro";
 import StartCard from "../components/StartCard.astro";
 import LayoutWithTransitions from "../layouts/LayoutWithTransitions.astro";
 import BlinkingText from "../components/Preact/BlinkingText";
+import SingleViewContainer from "../components/SingleViewContainer.astro";
 ---
 
 <LayoutWithTransitions title="Portfolio">
-  <main
-    id="thinghere"
-    class="flex flex-col min-h-screen h-screen w-screen items-center justify-center relative overflow-clip"
-  >
+  <SingleViewContainer>
     <CornerText className="top-0 -right-1/3 rotate-45" />
     <div class="mt-auto"></div>
-    <div class="mx-auto gap-y-4 flex flex-col w-1/3">
+    <div class="mx-auto gap-y-4 flex flex-col max-w-md w-full">
       <div class="text-left text-xl font-mono font-bold">
         <p class="text-highlight text-3xl">NAME HERE</p>
          TS Developer
         <BlinkingText
           text="BLINKING"
           classOn="text-highlight"
-          classOff="text-regular-text"
+          classOff="text-regularText"
           odds={0.8}
           client:load
         />
@@ -29,7 +27,5 @@ import BlinkingText from "../components/Preact/BlinkingText";
     </div>
     <div class="mt-auto"></div>
     <LinksFooter class="pb-2" />
-  </main>
-
-  <!-- <div class="mt-auto"></div> -->
+  </SingleViewContainer>
 </LayoutWithTransitions>

@@ -1,5 +1,7 @@
 ---
+import DarkModeHeader from "../components/DarkModeHeader.astro";
 import DefaultHeader from "../components/DefaultHeader.astro";
+import DarkModeToggle from "../components/Preact/DarkModeToggle";
 import ThreeCanvas from "../components/ThreeCanvas.astro";
 interface Props {
   title: string;
@@ -14,13 +16,13 @@ const { title } = Astro.props;
     <DefaultHeader {title}>
       <slot name="head" />
     </DefaultHeader>
+    <DarkModeHeader />
   </head>
   <body
-    id="root"
-    transition:persist
-    class="bg-background relative bg-noise selection:bg-highlight-off"
+    class="bg-background dark:bg-neutral-200 transition-colors selection:bg-highlightOff"
   >
     <slot />
+    <DarkModeToggle client:only />
     <div
       class="fixed inset-0 min-h-screen w-full -z-50"
       id="animation-root"

@@ -1,17 +1,16 @@
 ---
+import SingleViewContainer from "../components/SingleViewContainer.astro";
+import LinksFooter from "../components/Footer/LinksFooter.astro";
 import LayoutWithTransitions from "../layouts/LayoutWithTransitions.astro";
 ---
 
 <LayoutWithTransitions title="Welcome to Astro.">
-  <main
-    transition:animate="slide"
-    class="flex min-h-screen h-screen w-screen items-center justify-center text-center text-stone-200"
-  >
-    <div class="w-1/2 mx-auto">
-      <div class="text-slate-400">
+  <SingleViewContainer>
+    <div class="max-w-3xl w-max mx-auto my-auto flex flex-col items-center">
+      <div class="text-regularText">
         <div class="flex items-start">
           <span
-            class="text-start text-3xl text-highlight"
+            class="text-start text-3xl text-highlight font-semibold"
             transition:name="title"
           >
             About me
@@ -50,9 +49,10 @@ import LayoutWithTransitions from "../layouts/LayoutWithTransitions.astro";
         cum.
       </div>
       <a
-        class="text-2xl hover:underline decoration-highlight text-regular-text"
+        class="text-2xl hover:underline decoration-highlight text-regularText"
         href={"../"}>go back</a
       >
     </div>
-  </main>
+    <LinksFooter class="pb-2" />
+  </SingleViewContainer>
 </LayoutWithTransitions>
