@@ -1,4 +1,4 @@
-import VantaBase, { VANTA } from "./_base.js";
+import { VantaBase } from "./_base.js";
 import { rn, ri, sample, mobileCheck } from "./helpers.js";
 
 const win = typeof window == "object";
@@ -17,7 +17,7 @@ class Effect extends VantaBase {
   }
 
   onInit() {
-    var camera = (this.camera = new THREE.PerspectiveCamera(
+    let camera = (this.camera = new THREE.PerspectiveCamera(
       50,
       this.width / this.height,
       0.1,
@@ -32,9 +32,9 @@ class Effect extends VantaBase {
     camera.lookAt(0, 0, 0);
     this.scene.add(camera);
 
-    var starsGeometry = (this.starsGeometry = new THREE.BufferGeometry());
-    var i, j, k, l, star, starsMaterial, starField;
-    var space = this.options.spacing;
+    let starsGeometry = (this.starsGeometry = new THREE.BufferGeometry());
+    let i, j, k, l, star, starsMaterial, starField;
+    let space = this.options.spacing;
     const points = [];
 
     for (i = k = -30; k <= 30; i = ++k) {
@@ -56,20 +56,20 @@ class Effect extends VantaBase {
     this.scene.add(starField);
 
     if (this.options.showLines) {
-      var material = new THREE.LineBasicMaterial({
+      let material = new THREE.LineBasicMaterial({
         color: this.options.color2,
       });
-      var linesGeo = new THREE.BufferGeometry();
+      let linesGeo = new THREE.BufferGeometry();
       const points = [];
       for (i = 0; i < 200; i++) {
-        var f1 = rn(40, 60);
-        var f2 = f1 + rn(12, 20);
+        let f1 = rn(40, 60);
+        let f2 = f1 + rn(12, 20);
         // https://math.stackexchange.com/questions/1585975/how-to-generate-random-points-on-a-sphere
-        var z = rn(-1, 1);
-        var r = Math.sqrt(1 - z * z);
-        var theta = rn(0, Math.PI * 2);
-        var y = Math.sin(theta) * r;
-        var x = Math.cos(theta) * r;
+        let z = rn(-1, 1);
+        let r = Math.sqrt(1 - z * z);
+        let theta = rn(0, Math.PI * 2);
+        let y = Math.sin(theta) * r;
+        let x = Math.cos(theta) * r;
         points.push(new THREE.Vector3(x * f1, y * f1, z * f1));
         points.push(new THREE.Vector3(x * f2, y * f2, z * f2));
       }
@@ -98,15 +98,16 @@ class Effect extends VantaBase {
   onUpdate() {
     const starsGeometry = this.starsGeometry;
     const starField = this.starField;
+
     for (
-      var j = 0;
+      let j = 0;
       j < starsGeometry.attributes.position.array.length;
       j += 3
     ) {
       const x = starsGeometry.attributes.position.array[j];
       const y = starsGeometry.attributes.position.array[j + 1];
       const z = starsGeometry.attributes.position.array[j + 2];
-      // var i = starsGeometry.vertices[j]
+      // let i = starsGeometry.vertices[j]
       const newY = y + 0.1 * Math.sin(z * 0.02 + x * 0.015 + this.t * 0.02);
       starsGeometry.attributes.position.array[j + 1] = newY;
     }
@@ -141,6 +142,5 @@ class Effect extends VantaBase {
 }
 
 Effect.initClass();
-export default VANTA.register("DOTS", Effect);
 
 export { Effect as Dots };

@@ -1,10 +1,10 @@
 // http://thebookofshaders.com/13/
 // Original effect by Patricio Gonzalez Vivo
 
-import ShaderBase, {VANTA} from './_shaderBase.js'
+import ShaderBase, { VANTA } from "./_shaderBase.js";
 
 class Fog extends ShaderBase {}
-export default VANTA.register('FOG', Fog)
+export default VANTA.register("FOG", Fog);
 
 Fog.prototype.defaultOptions = {
   highlightColor: 0xffc300, // 0xaaffff
@@ -15,7 +15,7 @@ Fog.prototype.defaultOptions = {
   speed: 1.0,
   zoom: 1.0,
   scale: 2,
-  scaleMobile: 4
+  scaleMobile: 4,
 };
 
 Fog.prototype.fragmentShader = `\

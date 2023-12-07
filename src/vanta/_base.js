@@ -1,17 +1,18 @@
 import { mobileCheck, q, color2Hex, clearThree } from "./helpers.js";
 // const DEBUGMODE = window.location.toString().indexOf('VANTADEBUG') !== -1
 
-const win = typeof window == "object";
-let THREE = (win && window.THREE) || {};
-if (win && !window.VANTA) window.VANTA = {};
-const VANTA = (win && window.VANTA) || {};
-VANTA.register = (name, Effect) => {
-  return (VANTA[name] = (opts) => new Effect(opts));
-};
+// const win = typeof window == "object";
+// let THREE = (win && window.THREE) || {};
 
-VANTA.version = "0.5.24";
+// if (win && !window.VANTA) window.VANTA = {};
 
-export { VANTA };
+// const VANTA = (win && window.VANTA) || {};
+
+// VANTA.register = (name, Effect) => {
+//   return (VANTA[name] = (opts) => new Effect(opts));
+// };
+
+// VANTA.version = "0.5.24";
 
 // const ORBITCONTROLS = {
 //   enableZoom: false,
@@ -39,11 +40,8 @@ const error = function () {
   return console.error.apply(this, arguments);
 };
 
-VANTA.VantaBase = class VantaBase {
+class VantaBase {
   constructor(userOptions = {}) {
-    if (!win) return false;
-    VANTA.current = this;
-
     this.windowMouseMoveWrapper = this.windowMouseMoveWrapper.bind(this);
     this.windowTouchWrapper = this.windowTouchWrapper.bind(this);
     this.windowGyroWrapper = this.windowGyroWrapper.bind(this);
@@ -55,6 +53,7 @@ VANTA.VantaBase = class VantaBase {
       typeof this.getDefaultOptions === "function"
         ? this.getDefaultOptions()
         : this.defaultOptions;
+
     this.options = Object.assign(
       {
         mouseControls: true,
@@ -74,9 +73,9 @@ VANTA.VantaBase = class VantaBase {
 
     Object.assign(this.options, userOptions);
 
-    if (this.options.THREE) {
-      THREE = this.options.THREE; // Optionally use a custom build of three.js
-    }
+    // if (this.options.THREE) {
+    //   THREE = this.options.THREE; // Optionally use a custom build of three.js
+    // }
 
     // Set element
     this.el = this.options.el;
@@ -433,11 +432,7 @@ VANTA.VantaBase = class VantaBase {
       this.renderer = null;
       this.scene = null;
     }
-
-    if (VANTA.current === this) {
-      VANTA.current = null;
-    }
   }
-};
+}
 
-export default VANTA.VantaBase;
+export { VantaBase };

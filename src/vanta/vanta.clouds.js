@@ -1,7 +1,7 @@
-import ShaderBase, {VANTA} from './_shaderBase.js'
+import ShaderBase, { VANTA } from "./_shaderBase.js";
 
 class Effect extends ShaderBase {}
-export default VANTA.register('CLOUDS', Effect)
+export default VANTA.register("CLOUDS", Effect);
 
 Effect.prototype.defaultOptions = {
   backgroundColor: 0xffffff,
@@ -15,7 +15,7 @@ Effect.prototype.defaultOptions = {
   scaleMobile: 12,
   speed: 1,
   mouseEase: true,
-}
+};
 
 Effect.prototype.fragmentShader = `\
 uniform vec2 iResolution;
@@ -167,4 +167,4 @@ void main(){
 
     gl_FragColor = render( ro, rd, ivec2(gl_FragCoord-0.5) );
 }
-`
+`;
