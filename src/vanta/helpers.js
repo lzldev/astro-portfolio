@@ -3,8 +3,6 @@ Number.prototype.clamp = function (min, max) {
   return Math.min(Math.max(this, min), max);
 };
 
-// # module.exports = helpers
-
 export function mobileCheck() {
   if (typeof navigator !== "undefined") {
     return (
