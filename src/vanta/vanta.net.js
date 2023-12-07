@@ -1,8 +1,25 @@
-import VantaBase, { VANTA } from "./_base.js";
-import { rn, ri, mobileCheck, getBrightness } from "./helpers.js";
+import {
+  SphereGeometry,
+  MeshLambertMaterial,
+  Mesh,
+  Object3D,
+  Group,
+  Color,
+  BufferGeometry,
+  BufferAttribute,
+  DynamicDrawUsage,
+  LineBasicMaterial,
+  AdditiveBlending,
+  LineSegments,
+  PerspectiveCamera,
+  AmbientLight,
+  SpotLight,
+  Vector3,
+  Vector2,
+} from "three";
 
-const win = typeof window == "object";
-let THREE = win && window.THREE;
+import { VantaBase } from "./_base.js";
+import { rn, ri, mobileCheck, getBrightness } from "./helpers.js";
 
 class Effect extends VantaBase {
   static initClass() {
@@ -17,26 +34,25 @@ class Effect extends VantaBase {
   }
 
   constructor(userOptions) {
-    THREE = userOptions.THREE || THREE;
     super(userOptions);
   }
 
   // onInit() {
-  //   this.geometry = new THREE.BoxGeometry( 10, 10, 10 );
-  //   this.material = new THREE.MeshLambertMaterial({
+  //   this.geometry = new BoxGeometry( 10, 10, 10 );
+  //   this.material = new MeshLambertMaterial({
   //     color: this.options.color,
   //     emissive: this.options.color,
   //     emissiveIntensity: 0.75
   //   });
-  //   this.cube = new THREE.Mesh( this.geometry, this.material );
+  //   this.cube = new Mesh( this.geometry, this.material );
   //   this.scene.add(this.cube);
 
-  //   const c = this.camera = new THREE.PerspectiveCamera( 75, this.width/this.height, 0.1, 1000 );
+  //   const c = this.camera = new PerspectiveCamera( 75, this.width/this.height, 0.1, 1000 );
   //   c.position.z = 30;
   //   c.lookAt(0,0,0);
   //   this.scene.add(c);
 
-  //   const light = new THREE.HemisphereLight( 0xffffff, this.options.backgroundColor , 1 );
+  //   const light = new HemisphereLight( 0xffffff, this.options.backgroundColor , 1 );
   //   this.scene.add(light);
   // }
 
@@ -51,13 +67,13 @@ class Effect extends VantaBase {
       this.points = [];
     }
     if (this.options.showDots) {
-      const geometry = new THREE.SphereGeometry(0.25, 12, 12); // radius, width, height
-      const material = new THREE.MeshLambertMaterial({
+      const geometry = new SphereGeometry(0.25, 12, 12); // radius, width, height
+      const material = new MeshLambertMaterial({
         color: this.options.color,
       });
-      sphere = new THREE.Mesh(geometry, material);
+      sphere = new Mesh(geometry, material);
     } else {
-      sphere = new THREE.Object3D();
+      sphere = new Object3D();
     }
     this.cont.add(sphere);
     sphere.ox = x;
@@ -69,7 +85,7 @@ class Effect extends VantaBase {
   }
 
   onInit() {
-    this.cont = new THREE.Group();
+    this.cont = new Group();
     this.cont.position.set(0, 0, 0);
     this.scene.add(this.cont);
 
@@ -84,37 +100,33 @@ class Effect extends VantaBase {
     this.linePositions = new Float32Array(numPoints * numPoints * 3);
     this.lineColors = new Float32Array(numPoints * numPoints * 3);
 
-    const colorB = getBrightness(new THREE.Color(this.options.color));
-    const bgB = getBrightness(new THREE.Color(this.options.backgroundColor));
+    const colorB = getBrightness(new Color(this.options.color));
+    const bgB = getBrightness(new Color(this.options.backgroundColor));
     this.blending = colorB > bgB ? "additive" : "subtractive";
 
-    const geometry = new THREE.BufferGeometry();
+    const geometry = new BufferGeometry();
     geometry.setAttribute(
       "position",
-      new THREE.BufferAttribute(this.linePositions, 3).setUsage(
-        THREE.DynamicDrawUsage,
-      ),
+      new BufferAttribute(this.linePositions, 3).setUsage(DynamicDrawUsage),
     );
     geometry.setAttribute(
       "color",
-      new THREE.BufferAttribute(this.lineColors, 3).setUsage(
-        THREE.DynamicDrawUsage,
-      ),
+      new BufferAttribute(this.lineColors, 3).setUsage(DynamicDrawUsage),
     );
     geometry.computeBoundingSphere();
     geometry.setDrawRange(0, 0);
-    const material = new THREE.LineBasicMaterial({
-      vertexColors: THREE.VertexColors,
-      blending: this.blending === "additive" ? THREE.AdditiveBlending : null,
-      // blending: THREE.SubtractiveBlending
+    const material = new LineBasicMaterial({
+      vertexColors: true, // THIS IS JUST A BOOLEAN NOW
+      blending: this.blending === "additive" ? AdditiveBlending : null,
+      // blending: SubtractiveBlending
       transparent: true,
     });
-    // blending: THREE.CustomBlending
-    // blendEquation: THREE.SubtractEquation
-    // blendSrc: THREE.SrcAlphaFactor
-    // blendDst: THREE.OneMinusSrcAlphaFactor
+    // blending: CustomBlending
+    // blendEquation: SubtractEquation
+    // blendSrc: SrcAlphaFactor
+    // blendDst: OneMinusSrcAlphaFactor
 
-    this.linesMesh = new THREE.LineSegments(geometry, material);
+    this.linesMesh = new LineSegments(geometry, material);
     this.cont.add(this.linesMesh);
 
     for (let i = 0; i <= n; i++) {
@@ -144,7 +156,7 @@ class Effect extends VantaBase {
     // )
 
     // PerspectiveCamera( fov, aspect, near, far )
-    this.camera = new THREE.PerspectiveCamera(
+    this.camera = new PerspectiveCamera(
       25,
       this.width / this.height,
       0.01,
@@ -153,17 +165,17 @@ class Effect extends VantaBase {
     this.camera.position.set(50, 100, 150);
     this.scene.add(this.camera);
 
-    // ambience = new THREE.AmbientLight(0xffffff, 0.01)
+    // ambience = new AmbientLight(0xffffff, 0.01)
     // @scene.add(ambience)
 
-    // @pointLight = new THREE.PointLight(0xFFFFFF, 0.01)
+    // @pointLight = new PointLight(0xFFFFFF, 0.01)
     // @pointLight.position.set(0, 150, 200)
     // @scene.add( @pointLight )
 
-    const ambience = new THREE.AmbientLight(0xffffff, 0.75);
+    const ambience = new AmbientLight(0xffffff, 0.75);
     this.scene.add(ambience);
 
-    this.spot = new THREE.SpotLight(0xffffff, 1);
+    this.spot = new SpotLight(0xffffff, 1);
     this.spot.position.set(0, 200, 0);
     this.spot.distance = 400;
     this.spot.target = this.cont;
@@ -185,7 +197,7 @@ class Effect extends VantaBase {
     super.setOptions(userOptions);
     if (userOptions.color) {
       this.points.forEach((p) => {
-        p.material.color = new THREE.Color(userOptions.color);
+        p.material.color = new Color(userOptions.color);
       });
     }
   }
@@ -201,7 +213,7 @@ class Effect extends VantaBase {
       diff = c.ty - c.position.y;
       c.position.y += diff * 0.02;
     }
-    c.lookAt(new THREE.Vector3(0, 0, 0));
+    c.lookAt(new Vector3(0, 0, 0));
     // c.near = 0.01
     // c.updateProjectionMatrix()
 
@@ -209,13 +221,13 @@ class Effect extends VantaBase {
     let colorpos = 0;
     let numConnected = 0;
 
-    const bgColor = new THREE.Color(this.options.backgroundColor);
-    const color = new THREE.Color(this.options.color);
+    const bgColor = new Color(this.options.backgroundColor);
+    const color = new Color(this.options.color);
     const diffColor = color.clone().sub(bgColor);
 
     if (this.rayCaster) {
       this.rayCaster.setFromCamera(
-        new THREE.Vector2(this.rcMouseX, this.rcMouseY),
+        new Vector2(this.rcMouseX, this.rcMouseY),
         this.camera,
       );
     }
@@ -225,13 +237,13 @@ class Effect extends VantaBase {
     // direction = @rayCaster.ray.direction
     // direction.normalize()
     // distance = 1000000 # at what distance to determine pointB
-    // pointB = new THREE.Vector3()
+    // pointB = new Vector3()
     // pointB.addVectors( pointA, direction.multiplyScalar( distance ) )
-    // geometry = new THREE.Geometry()
+    // geometry = new Geometry()
     // geometry.vertices.push( pointA )
     // geometry.vertices.push( pointB )
-    // material = new THREE.LineBasicMaterial( { color : 0xffffff } )
-    // line = new THREE.Line( geometry, material )
+    // material = new LineBasicMaterial( { color : 0xffffff } )
+    // line = new Line( geometry, material )
     // @scene.add( line )
 
     for (let i = 0; i < this.points.length; i++) {
@@ -275,12 +287,12 @@ class Effect extends VantaBase {
             1,
           );
           if (this.blending === "additive") {
-            lineColor = new THREE.Color(0x000000).lerp(diffColor, alpha);
+            lineColor = new Color(0x000000).lerp(diffColor, alpha);
           } else {
             lineColor = bgColor.clone().lerp(color, alpha);
           }
           // if @blending == 'subtractive'
-          //   lineColor = new THREE.Color(0x000000).lerp(diffColor, alpha)
+          //   lineColor = new Color(0x000000).lerp(diffColor, alpha)
 
           this.linePositions[vertexpos++] = p.position.x;
           this.linePositions[vertexpos++] = p.position.y;
@@ -323,7 +335,7 @@ class Effect extends VantaBase {
     c.ty = c.oy + (y - 0.5) * 50 * (this.options.mouseCoeffY || 1);
 
     if (!this.rayCaster) {
-      // this.rayCaster = new THREE.Raycaster()
+      // this.rayCaster = new Raycaster()
     }
     this.rcMouseX = x * 2 - 1;
     this.rcMouseY = -x * 2 + 1;
@@ -334,5 +346,7 @@ class Effect extends VantaBase {
     this.points = [];
   }
 }
+
 Effect.initClass();
-export default VANTA.register("NET", Effect);
+
+export { Effect as Net };

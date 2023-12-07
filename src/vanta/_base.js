@@ -1,3 +1,4 @@
+import { WebGLRenderer, Scene } from "three";
 import { mobileCheck, q, color2Hex, clearThree } from "./helpers.js";
 // const DEBUGMODE = window.location.toString().indexOf('VANTADEBUG') !== -1
 
@@ -20,7 +21,7 @@ import { mobileCheck, q, color2Hex, clearThree } from "./helpers.js";
 //   userRotateSpeed: 2.0,
 //   maxPolarAngle: Math.PI * 0.8, // (pi/2 is pure horizontal)
 //   mouseButtons: {
-//     ORBIT: THREE.MOUSE.LEFT,
+//     ORBIT: MOUSE.LEFT,
 //     ZOOM: null,
 //     PAN: null
 //   }
@@ -184,12 +185,13 @@ class VantaBase {
   }
 
   initThree() {
-    if (!THREE.WebGLRenderer) {
+    if (!WebGLRenderer) {
       console.warn("[VANTA] No THREE defined on window");
       return;
     }
+
     // Set renderer
-    this.renderer = new THREE.WebGLRenderer({
+    this.renderer = new WebGLRenderer({
       alpha: true,
       antialias: true,
     });
@@ -199,7 +201,7 @@ class VantaBase {
       this.options.backgroundAlpha = 1;
     }
 
-    this.scene = new THREE.Scene();
+    this.scene = new Scene();
   }
 
   getCanvasElement() {
@@ -381,10 +383,10 @@ class VantaBase {
   }
 
   // setupControls() {
-  //   if (DEBUGMODE && THREE.OrbitControls) {
-  //     this.controls = new THREE.OrbitControls(this.camera, this.renderer.domElement)
+  //   if (DEBUGMODE && OrbitControls) {
+  //     this.controls = new OrbitControls(this.camera, this.renderer.domElement)
   //     Object.assign(this.controls, ORBITCONTROLS)
-  //     return this.scene.add(new THREE.AxisHelper(100))
+  //     return this.scene.add(new AxisHelper(100))
   //   }
   // }
 

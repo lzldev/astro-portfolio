@@ -1,11 +1,12 @@
-import ShaderBase, { VANTA } from "./_shaderBase.js";
-
-const win = typeof window == "object";
-let THREE = win && window.THREE;
+import {
+  LinearFilter,
+  WebGLRenderTarget,
+  RGBAFormat as RGBFormat,
+} from "three";
+import { ShaderBase } from "./_shaderBase.js";
 
 class Halo extends ShaderBase {
   constructor(userOptions) {
-    THREE = userOptions.THREE || THREE;
     super(userOptions);
   }
 
@@ -31,14 +32,14 @@ class Halo extends ShaderBase {
 
   onInit() {
     const pars = {
-      minFilter: THREE.LinearFilter,
-      magFilter: THREE.LinearFilter,
-      format: THREE.RGBFormat,
+      minFilter: LinearFilter,
+      magFilter: LinearFilter,
+      format: RGBFormat,
     };
     const ww = (this.width * window.devicePixelRatio) / this.scale;
     const hh = (this.height * window.devicePixelRatio) / this.scale;
-    this.bufferTarget = new THREE.WebGLRenderTarget(ww, hh, pars);
-    this.bufferFeedback = new THREE.WebGLRenderTarget(ww, hh, pars);
+    this.bufferTarget = new WebGLRenderTarget(ww, hh, pars);
+    this.bufferFeedback = new WebGLRenderTarget(ww, hh, pars);
   }
   initBasicShader(fragmentShader, vertexShader) {
     super.initBasicShader(fragmentShader, vertexShader);
@@ -75,7 +76,8 @@ class Halo extends ShaderBase {
     this.bufferFeedback = null;
   }
 }
-export default VANTA.register("HALO", Halo);
+
+export { Halo };
 
 Halo.prototype.fragmentShader = `\
 uniform vec2 iResolution;

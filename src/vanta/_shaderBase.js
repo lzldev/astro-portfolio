@@ -1,15 +1,21 @@
-import VantaBase from "./_base.js";
-export { VANTA } from "./_base.js";
+import { VantaBase } from "./_base.js";
+import {
+  Camera,
+  Color,
+  Mesh,
+  PlaneGeometry,
+  ShaderMaterial,
+  TextureLoader,
+  Vector2,
+  Vector3,
+} from "three";
 
-const win = typeof window == "object";
-let THREE = win && window.THREE;
-
-export default class ShaderBase extends VantaBase {
+class ShaderBase extends VantaBase {
   constructor(userOptions) {
-    THREE = userOptions.THREE || THREE;
-    THREE.Color.prototype.toVector = function () {
-      return new THREE.Vector3(this.r, this.g, this.b);
+    Color.prototype.toVector = function () {
+      return new Vector3(this.r, this.g, this.b);
     };
+
     super(userOptions);
     this.updateUniforms = this.updateUniforms.bind(this);
   }
@@ -22,7 +28,7 @@ export default class ShaderBase extends VantaBase {
       },
       iResolution: {
         type: "v2",
-        value: new THREE.Vector2(1, 1),
+        value: new Vector2(1, 1),
       },
       iDpr: {
         type: "f",
@@ -30,7 +36,7 @@ export default class ShaderBase extends VantaBase {
       },
       iMouse: {
         type: "v2",
-        value: new THREE.Vector2(this.mouseX || 0, this.mouseY || 0),
+        value: new Vector2(this.mouseX || 0, this.mouseY || 0),
       },
     };
     super.init();
@@ -54,7 +60,7 @@ export default class ShaderBase extends VantaBase {
     if (typeof this.valuesChanger === "function") {
       this.valuesChanger(); // Some effects define this themselves
     }
-    const material = new THREE.ShaderMaterial({
+    const material = new ShaderMaterial({
       uniforms: this.uniforms,
       vertexShader: vertexShader,
       fragmentShader: fragmentShader,
@@ -63,12 +69,12 @@ export default class ShaderBase extends VantaBase {
     if (texPath) {
       this.uniforms.iTex = {
         type: "t",
-        value: new THREE.TextureLoader().load(texPath),
+        value: new TextureLoader().load(texPath),
       };
     }
-    const mesh = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), material);
+    const mesh = new Mesh(new PlaneGeometry(2, 2), material);
     this.scene.add(mesh);
-    this.camera = new THREE.Camera();
+    this.camera = new Camera();
     this.camera.position.z = 1;
   }
 
@@ -80,7 +86,7 @@ export default class ShaderBase extends VantaBase {
       if (k.toLowerCase().indexOf("color") !== -1) {
         newUniforms[k] = {
           type: "v3",
-          value: new THREE.Color(v).toVector(),
+          value: new Color(v).toVector(),
         };
       } else if (typeof v === "number") {
         newUniforms[k] = {
@@ -97,3 +103,5 @@ export default class ShaderBase extends VantaBase {
     this.uniforms.iResolution.value.y = this.height / this.scale;
   }
 }
+
+export { ShaderBase };

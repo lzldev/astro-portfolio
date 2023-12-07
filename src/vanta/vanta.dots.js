@@ -1,8 +1,16 @@
-import { VantaBase } from "./_base.js";
-import { rn, ri, sample, mobileCheck } from "./helpers.js";
+import {
+  BufferGeometry,
+  DynamicDrawUsage,
+  LineBasicMaterial,
+  LineSegments,
+  PerspectiveCamera,
+  Points,
+  PointsMaterial,
+  Vector3,
+} from "three";
 
-const win = typeof window == "object";
-let THREE = win && window.THREE;
+import { VantaBase } from "./_base.js";
+import { rn } from "./helpers.js";
 
 class Effect extends VantaBase {
   static initClass() {
@@ -17,7 +25,7 @@ class Effect extends VantaBase {
   }
 
   onInit() {
-    let camera = (this.camera = new THREE.PerspectiveCamera(
+    let camera = (this.camera = new PerspectiveCamera(
       50,
       this.width / this.height,
       0.1,
@@ -32,14 +40,14 @@ class Effect extends VantaBase {
     camera.lookAt(0, 0, 0);
     this.scene.add(camera);
 
-    let starsGeometry = (this.starsGeometry = new THREE.BufferGeometry());
+    let starsGeometry = (this.starsGeometry = new BufferGeometry());
     let i, j, k, l, star, starsMaterial, starField;
     let space = this.options.spacing;
     const points = [];
 
     for (i = k = -30; k <= 30; i = ++k) {
       for (j = l = -30; l <= 30; j = ++l) {
-        star = new THREE.Vector3();
+        star = new Vector3();
         star.x = i * space + space / 2;
         star.y = rn(0, 5) - 150;
         star.z = j * space + space / 2;
@@ -48,18 +56,18 @@ class Effect extends VantaBase {
     }
     starsGeometry.setFromPoints(points);
 
-    starsMaterial = new THREE.PointsMaterial({
+    starsMaterial = new PointsMaterial({
       color: this.options.color,
       size: this.options.size,
     });
-    starField = this.starField = new THREE.Points(starsGeometry, starsMaterial);
+    starField = this.starField = new Points(starsGeometry, starsMaterial);
     this.scene.add(starField);
 
     if (this.options.showLines) {
-      let material = new THREE.LineBasicMaterial({
+      let material = new LineBasicMaterial({
         color: this.options.color2,
       });
-      let linesGeo = new THREE.BufferGeometry();
+      let linesGeo = new BufferGeometry();
       const points = [];
       for (i = 0; i < 200; i++) {
         let f1 = rn(40, 60);
@@ -70,28 +78,28 @@ class Effect extends VantaBase {
         let theta = rn(0, Math.PI * 2);
         let y = Math.sin(theta) * r;
         let x = Math.cos(theta) * r;
-        points.push(new THREE.Vector3(x * f1, y * f1, z * f1));
-        points.push(new THREE.Vector3(x * f2, y * f2, z * f2));
+        points.push(new Vector3(x * f1, y * f1, z * f1));
+        points.push(new Vector3(x * f2, y * f2, z * f2));
       }
       linesGeo.setFromPoints(points);
-      this.linesMesh = new THREE.LineSegments(linesGeo, material);
+      this.linesMesh = new LineSegments(linesGeo, material);
       this.scene.add(this.linesMesh);
     }
 
-    // this.geometry = new THREE.BoxGeometry( 10, 10, 10 );
-    // this.material = new THREE.MeshLambertMaterial({
+    // this.geometry = new BoxGeometry( 10, 10, 10 );
+    // this.material = new MeshLambertMaterial({
     //   color: this.options.color,
     //   emissive: this.options.color,
     //   emissiveIntensity: 0.75
     // });
-    // this.cube = new THREE.Mesh( this.geometry, this.material );
+    // this.cube = new Mesh( this.geometry, this.material );
     // this.scene.add(this.cube);
 
-    // const c = this.camera = new THREE.PerspectiveCamera( 75, this.width/this.height, 0.1, 1000 );
+    // const c = this.camera = new PerspectiveCamera( 75, this.width/this.height, 0.1, 1000 );
     // c.position.z = 30;
     // this.scene.add(c);
 
-    // const light = new THREE.HemisphereLight( 0xffffff, this.options.backgroundColor , 1 );
+    // const light = new HemisphereLight( 0xffffff, this.options.backgroundColor , 1 );
     // this.scene.add(light);
   }
 
@@ -112,7 +120,7 @@ class Effect extends VantaBase {
       starsGeometry.attributes.position.array[j + 1] = newY;
     }
 
-    starsGeometry.attributes.position.setUsage(THREE.DynamicDrawUsage);
+    starsGeometry.attributes.position.setUsage(DynamicDrawUsage);
     starsGeometry.computeVertexNormals();
     starsGeometry.attributes.position.needsUpdate = true;
 
