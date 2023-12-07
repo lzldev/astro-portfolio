@@ -3,35 +3,37 @@
     This import is goofy so the bundlesize is smaller in the end.
   */
 
-  import {
-    PerspectiveCamera,
-    WebGLRenderer,
-    Scene,
-    BufferGeometry,
-    Vector3,
-    PointsMaterial,
-    Points,
-    DynamicDrawUsage,
-    LineSegments,
-  } from "three";
+  // import {
+  //   PerspectiveCamera,
+  //   WebGLRenderer,
+  //   Scene,
+  //   BufferGeometry,
+  //   Vector3,
+  //   PointsMaterial,
+  //   Points,
+  //   DynamicDrawUsage,
+  //   LineSegments,
+  // } from "three";
 
-  //@ts-expect-error since the imported object is incomplete the Type is invalid.
-  window["THREE"] = {
-    PerspectiveCamera,
-    WebGLRenderer,
-    Scene,
-    BufferGeometry,
-    Vector3,
-    PointsMaterial,
-    Points,
-    DynamicDrawUsage,
-    LineSegments,
-  };
+  // //@ts-expect-error since the imported object is incomplete the Type is invalid.
+  // window["THREE"] = {
+  //   PerspectiveCamera,
+  //   WebGLRenderer,
+  //   Scene,
+  //   BufferGeometry,
+  //   Vector3,
+  //   PointsMaterial,
+  //   Points,
+  //   DynamicDrawUsage,
+  //   LineSegments,
+  // };
 
-  await import("../scripts/vanta.dots.min.js");
+  // const { Dots } = await import("../vanta/vanta.dots");
+  // import { Dots } from "../vanta/vanta.dots";
+  // import { Net } from "../vanta/vanta.net";
+  const { Net } = await import("../vanta/vanta.net");
 
-  //@ts-expect-error Added via the script
-  VANTA.DOTS({
+  const dots = new Net({
     el: "#animation-root",
     mouseControls: true,
     touchControls: true,
@@ -40,20 +42,30 @@
     minWidth: 200.0,
     scale: 1.0,
     scaleMobile: 1.0,
-    // color: 0xfcb5c6,
-    color: 0xdb2777,
-    color2: 0x73cce9,
-    backgroundColor: 0xffffff,
-    size: 4.5,
-    showLines: false,
   });
+  // const dots = new Dots({
+  //   el: "#animation-root",
+  //   mouseControls: true,
+  //   touchControls: true,
+  //   gyroControls: false,
+  //   minHeight: 200.0,
+  //   minWidth: 200.0,
+  //   scale: 1.0,
+  //   scaleMobile: 1.0,
+  //   // color: 0xfcb5c6,
+  //   color: 0xdb2777,
+  //   color2: 0x73cce9,
+  //   backgroundColor: 0xffffff,
+  //   size: 4.5,
+  //   showLines: false,
+  // });
 
   // Make the Canvas transparent
   const canvas = document.getElementById("animation-root")
     ?.lastChild as HTMLCanvasElement;
-  console.log(canvas);
-  const context = canvas.getContext("webgl2");
-  console.log(context);
+  console.log(dots);
+  // console.log(canvas);
+  // console.log(context);
   const gl = canvas.getContext("webgl2")!;
   console.log(gl);
   gl.clearColor(0.0, 0.0, 0.0, 0.0);
