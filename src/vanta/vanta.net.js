@@ -115,6 +115,7 @@ class Effect extends VantaBase {
     );
     geometry.computeBoundingSphere();
     geometry.setDrawRange(0, 0);
+
     const material = new LineBasicMaterial({
       vertexColors: true, // THIS IS JUST A BOOLEAN NOW
       blending: this.blending === "additive" ? AdditiveBlending : null,
@@ -162,6 +163,7 @@ class Effect extends VantaBase {
       0.01,
       10000,
     );
+
     this.camera.position.set(50, 100, 150);
     this.scene.add(this.camera);
 
@@ -312,6 +314,7 @@ class Effect extends VantaBase {
         }
       }
     }
+
     this.linesMesh.geometry.setDrawRange(0, numConnected * 2);
     this.linesMesh.geometry.attributes.position.needsUpdate = true;
     this.linesMesh.geometry.attributes.color.needsUpdate = true;

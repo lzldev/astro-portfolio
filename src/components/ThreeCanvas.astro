@@ -1,9 +1,9 @@
 <script>
-  // const { Net } = await import("../vanta/vanta.net");
-  const { Halo } = await import("../vanta/vanta.halo");
+  import { Halo } from "../vanta/vanta.halo";
 
   new Halo({
     el: "#animation-root",
+    backgroundAlpha: 0,
     mouseControls: true,
     touchControls: true,
     gyroControls: false,
@@ -11,14 +11,16 @@
     // minWidth: 200.0,
     scale: 1.0,
     minWidth: 200.0,
+    minHeight: 200.0,
     amplitudeFactor: 3.0,
-    xOffset: -0.2,
-    size: 3.0,
+    xOffset: 0.5,
+    yOffset: 0.5,
+    size: 4.0,
     scaleMobile: 1.0,
     // baseColor: 0x43f5,
-    // baseColor: 0xfcb5c6,
+    baseColor: 0xfcb5c6,
     // baseColor: 0x73cce9,
-    baseColor: 0xff0000,
+    // baseColor: 0xff0000,
     color2: 0xff0000,
     backgroundColor: 0x0,
   });

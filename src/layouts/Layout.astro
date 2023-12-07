@@ -19,14 +19,9 @@ const { title } = Astro.props;
     <DarkModeHeader />
   </head>
   <body
-    class="bg-background dark:bg-neutral-200 transition-colors selection:bg-highlightOff relative overflow-x-hidden"
+    class="bg-background dark:bg-backgroundDark transition-colors selection:bg-highlightOff relative overflow-x-hidden"
   >
     <slot />
-    <img
-      src="https://i.redd.it/uh2igeqamjo91.gif"
-      class="absolute inset-0 -z-10 m-auto -translate-x-16"
-    />
     <DarkModeToggle client:only />
-    <ThreeCanvas />
   </body>
 </html>

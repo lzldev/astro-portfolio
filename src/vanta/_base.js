@@ -172,10 +172,10 @@ class VantaBase {
   applyCanvasStyles(canvasEl, opts = {}) {
     Object.assign(canvasEl.style, {
       position: "absolute",
-      zIndex: 0,
+      // zIndex: 0,
       top: 0,
       left: 0,
-      background: "",
+      background: "transparent",
     });
     if (this.options.pixelated) {
       canvasEl.style.imageRendering = "pixelated";
@@ -195,6 +195,7 @@ class VantaBase {
       alpha: true,
       antialias: true,
     });
+
     this.el.appendChild(this.renderer.domElement);
     this.applyCanvasStyles(this.renderer.domElement);
     if (isNaN(this.options.backgroundAlpha)) {

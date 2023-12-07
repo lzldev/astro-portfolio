@@ -7,7 +7,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: colors.neutral["900"],
+        background: colors.neutral["400"],
+        backgroundDark: colors.neutral["900"],
         darkBackground: colors.neutral["900"],
         accent: colors.neutral["500"],
         highlight: colors.neutral["600"],

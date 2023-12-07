@@ -1,0 +1,19 @@
+---
+import ThreeCanvas from "./ThreeCanvas.astro";
+---
+
+<main
+  transition:name="container"
+  transition:animate="slide"
+  class="flex flex-col min-h-screen h-screen w-screen items-center justify-center max-w-[100vw] relative"
+>
+  <slot />
+  <div
+    id="animation-root"
+    transition:persist="bg-canvas"
+    transition:animate="none"
+    class="absolute -z-50 min-h-screen w-full motion-reduce:hidden"
+  >
+    <ThreeCanvas />
+  </div>
+</main>

@@ -5,7 +5,7 @@ import CornerText from "../../components/CornerText.astro";
 import StartCard from "../../components/StartCard.astro";
 import LayoutWithTransitions from "../../layouts/LayoutWithTransitions.astro";
 import BlinkingText from "../../components/Preact/BlinkingText";
-import SingleViewContainer from "../../components/SingleViewContainer.astro";
+import SinglePageContainer from "../../components/SinglePageContainer.astro";
 import { ui } from "../../i18n/ui";
 import {
   getLangFromUrl,
@@ -27,15 +27,11 @@ const t = useTranslations(lang);
 ---
 
 <LayoutWithTransitions title="Portfolio">
-  <SingleViewContainer>
+  <SinglePageContainer>
     <CornerText className="top-0 -right-1/3 rotate-45" />
-    <img
-      src="https://i.redd.it/uh2igeqamjo91.gif"
-      class="absolute inset-0 -z-10 m-auto -scale-x-100 translate-x-16"
-    />
     <div class="mt-auto"></div>
     <div
-      class="mx-auto gap-y-4 flex flex-col max-w-md w-full bg-neutral-200 p-4 rounded-md bg-opacity-20 backdrop-blur-xl"
+      class="mx-auto gap-y-4 flex flex-col max-w-md w-full bg-neutral-600 p-6 rounded-md bg-opacity-20 backdrop-blur-xl dark:bg-neutral-200 dark:bg-opacity-20"
     >
       <div class="text-left text-xl font-mono font-bold">
         <p class="text-highlight text-3xl">NAME HERE</p>
@@ -52,5 +48,5 @@ const t = useTranslations(lang);
     </div>
     <div class="mt-auto"></div>
     <LinksFooter class="pb-2" />
-  </SingleViewContainer>
+  </SinglePageContainer>
 </LayoutWithTransitions>

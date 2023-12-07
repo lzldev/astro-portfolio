@@ -23,8 +23,8 @@ class Halo extends ShaderBase {
       size: 1.0,
       speed: 1.0,
       mouseEase: true,
-      // scaleMobile: window.devicePixelRatio,
-      // scale: window.devicePixelRatio,
+      scaleMobile: window.devicePixelRatio,
+      scale: window.devicePixelRatio,
       scaleMobile: 1,
       scale: 1,
     };
@@ -83,6 +83,6 @@ class Halo extends ShaderBase {
   }
 }
 
-import HaloShader from "./shaders/halo.frag?raw";
+import HaloShader from "./shaders/halo2.frag?raw";
 Halo.prototype.fragmentShader = HaloShader;
 export { Halo };

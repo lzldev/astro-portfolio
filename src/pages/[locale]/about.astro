@@ -1,5 +1,5 @@
 ---
-import SingleViewContainer from "../../components/SingleViewContainer.astro";
+import SinglePageContainer from "../../components/SinglePageContainer.astro";
 import LinksFooter from "../../components/Footer/LinksFooter.astro";
 import LayoutWithTransitions from "../../layouts/LayoutWithTransitions.astro";
 import type { GetStaticPaths } from "astro";
@@ -24,7 +24,7 @@ const t = useTranslations(lang);
 ---
 
 <LayoutWithTransitions title="Welcome to Astro.">
-  <SingleViewContainer>
+  <SinglePageContainer>
     <div class="max-w-3xl w-max mx-auto my-auto flex flex-col items-center">
       <div class="text-regularText">
         <div class="flex items-start">
@@ -73,5 +73,5 @@ const t = useTranslations(lang);
       >
     </div>
     <LinksFooter class="pb-2" />
-  </SingleViewContainer>
+  </SinglePageContainer>
 </LayoutWithTransitions>
