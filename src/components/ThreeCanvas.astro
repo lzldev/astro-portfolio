@@ -1,27 +1,37 @@
-<script>
-  import { Halo } from "../vanta/vanta.halo";
+<Fragment>
+  <slot />
+  <div
+    id="animation-root"
+    transition:persist="bg-canvas"
+    transition:animate="none"
+    class="absolute -z-50 min-h-screen w-full motion-reduce:hidden"
+  >
+  </div>
+  <script>
+    import { Halo } from "../vanta/vanta.halo";
 
-  new Halo({
-    el: "#animation-root",
-    backgroundAlpha: 0,
-    mouseControls: true,
-    touchControls: true,
-    gyroControls: false,
-    // minHeight: 200.0,
-    // minWidth: 200.0,
-    scale: 1.0,
-    minWidth: 200.0,
-    minHeight: 200.0,
-    amplitudeFactor: 3.0,
-    xOffset: 0.5,
-    yOffset: 0.5,
-    size: 4.0,
-    scaleMobile: 1.0,
-    // baseColor: 0x43f5,
-    baseColor: 0xfcb5c6,
-    // baseColor: 0x73cce9,
-    // baseColor: 0xff0000,
-    color2: 0xff0000,
-    backgroundColor: 0x0,
-  });
-</script>
+    new Halo({
+      el: "#animation-root",
+      backgroundAlpha: 0,
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      // minHeight: 200.0,
+      // minWidth: 200.0,
+      scale: 1.0,
+      minWidth: 200.0,
+      minHeight: 200.0,
+      amplitudeFactor: 3.0,
+      xOffset: 0.5,
+      yOffset: 0.5,
+      size: 4.0,
+      scaleMobile: 1.0,
+      // baseColor: 0x43f5,
+      baseColor: 0xfcb5c6,
+      // baseColor: 0x73cce9,
+      // baseColor: 0xff0000,
+      color2: 0xff0000,
+      backgroundColor: 0x0,
+    });
+  </script>
+</Fragment>

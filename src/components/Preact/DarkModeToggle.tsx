@@ -18,7 +18,7 @@ export default function ThemeToggle() {
 
   return (
     <div
-      className="absolute left-4 top-4 z-50 flex h-24 w-24 items-center justify-center"
+      className="absolute right-4 top-4 z-50 flex h-8 w-8 items-center justify-center"
       onClick={handleClick}
     >
       {theme === "light" ? <DarkModeIcon /> : <LightModeIcon />}

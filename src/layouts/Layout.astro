@@ -12,16 +12,20 @@ const { title } = Astro.props;
 <!doctype html>
 <html lang="en">
   <head>
-    <DefaultHeader {title}>
-      <slot name="head" />
-    </DefaultHeader>
+    <DefaultHeader {title} />
     <DarkModeHeader />
   </head>
   <body
     transition:persist="body"
-    class="bg-background dark:bg-backgroundDark transition-colors selection:bg-highlightOff relative overflow-x-hidden antialiased"
+    class="bg-background dark:bg-backgroundDark text-regularText transition-colors selection:bg-highlightOff relative overflow-x-hidden antialiased"
   >
-    <slot />
-    <DarkModeToggle client:only />
+    <main
+      transition:name="main"
+      transition:animate="slide"
+      class="flex flex-col min-h-screen h-screen w-screen items-center justify-center max-w-[100vw] relative"
+    >
+      <slot />
+    </main>
+    <DarkModeToggle transition:persist="darkMode" client:only />
   </body>
 </html>

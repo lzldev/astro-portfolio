@@ -9,9 +9,11 @@ export const ui = {
   en: {
     "nav.about": "Lorem ipsum",
     "nav.goBack": "go back",
+    "but.cv": "Curriculum",
   },
   "pt-br": {
     "nav.about": "Lorem impsum",
     "nav.goBack": "back",
+    "but.cv": "Currículo",
   },
 } as const;
