@@ -23,9 +23,11 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<LayoutWithTransitions title="Welcome to Astro.">
+<LayoutWithTransitions title="About">
   <SinglePageContainer>
-    <div class="max-w-3xl w-max mx-auto my-auto flex flex-col items-center">
+    <div
+      class="max-w-3xl w-max mx-auto my-auto flex flex-col items-center bg-surfaceBackground bg-opacity-20 p-8 rounded-md backdrop-blur-xl"
+    >
       <div class="text-regularText">
         <div class="flex items-start">
           <span
@@ -35,43 +37,46 @@ const t = useTranslations(lang);
             {t("nav.about")}
           </span>
         </div>
-         Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores
-        dolorum doloremque neque reprehenderit maxime eligendi mollitia
-        accusantium tenetur quisquam voluptate illum sunt alias iusto eius vero
-        animi, unde consequuntur ea. Lorem ipsum dolor sit amet, consectetur
-        adipisicing elit. Nulla quas optio eos odio praesentium dolore? Ab
-        reiciendis sunt dignissimos fugiat, reprehenderit amet, aliquid commodi
-        deleniti atque possimus voluptatibus libero cupiditate. Omnis saepe
-        facere, nisi, a repellat placeat reiciendis dolorem earum cum quod non
-        dolores repellendus labore molestiae suscipit itaque consectetur enim,
-        quae atque vero expedita. Incidunt dolor odit obcaecati quos. Nihil
-        aspernatur fugiat necessitatibus, in aliquam ex expedita debitis.
-        Incidunt voluptas nobis omnis est eligendi sapiente ea praesentium
-        veritatis, odit distinctio neque quo quia tenetur. Voluptas eaque hic
-        vel praesentium. Natus, soluta? Consequuntur quos autem vel provident
-        quo unde laborum consectetur sint vitae non odio nam dicta praesentium
-        nostrum illo debitis, suscipit perferendis nisi voluptates animi dolorem
-        exercitationem fuga. Maxime. Nesciunt perspiciatis ex nulla
-        exercitationem aspernatur vitae eum, ipsum fugiat eaque. Tempore
-        repellendus corporis dolorem velit doloribus vero voluptatibus, optio et
-        aut reprehenderit ab dolore, esse distinctio quis nesciunt dolor. Eum
-        doloribus, dicta aut temporibus ducimus, iste similique inventore soluta
-        ad deserunt tenetur voluptatibus vitae molestiae delectus, facilis ea
-        officiis nesciunt repellat perspiciatis. Nihil veniam rerum hic tempora.
-        Temporibus, fuga? Similique molestiae magni saepe neque voluptatum ullam
-        expedita corrupti? Quae nulla pariatur, dignissimos, ea fugit placeat
-        tenetur laborum harum et maxime perspiciatis ratione nemo assumenda
-        dolorem, expedita dicta praesentium culpa! Hic beatae voluptatem aliquid
-        nam exercitationem, expedita similique a nesciunt, sit ipsam minima
-        deserunt? Cumque veniam sit sunt. Voluptas culpa doloribus sint dolore
-        mollitia recusandae voluptatibus possimus aliquam autem magnam. Eos ad
-        cum.
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores
+          dolorum doloremque neque reprehenderit maxime eligendi mollitia
+          accusantium tenetur quisquam voluptate illum sunt alias iusto eius
+          vero animi, unde consequuntur ea. Lorem ipsum dolor sit amet,
+          consectetur adipisicing elit. Nulla quas optio eos odio praesentium
+          dolore? Ab reiciendis sunt dignissimos fugiat, reprehenderit amet,
+          aliquid commodi deleniti atque possimus voluptatibus libero
+          cupiditate. Omnis saepe facere, nisi, a repellat placeat reiciendis
+          dolorem earum cum quod non dolores repellendus labore molestiae
+          suscipit itaque consectetur enim, quae atque vero expedita. Incidunt
+          dolor odit obcaecati quos. Nihil aspernatur fugiat necessitatibus, in
+          aliquam ex expedita debitis. Incidunt voluptas nobis omnis est
+          eligendi sapiente ea praesentium veritatis, odit distinctio neque quo
+          quia tenetur. Voluptas eaque hic vel praesentium. Natus, soluta?
+          Consequuntur quos autem vel provident quo unde laborum consectetur
+          sint vitae non odio nam dicta praesentium nostrum illo debitis,
+          suscipit perferendis nisi voluptates animi dolorem exercitationem
+          fuga. Maxime. Nesciunt perspiciatis ex nulla exercitationem aspernatur
+          vitae eum, ipsum fugiat eaque. Tempore repellendus corporis dolorem
+          velit doloribus vero voluptatibus, optio et aut reprehenderit ab
+          dolore, esse distinctio quis nesciunt dolor. Eum doloribus, dicta aut
+          temporibus ducimus, iste similique inventore soluta ad deserunt
+          tenetur voluptatibus vitae molestiae delectus, facilis ea officiis
+          nesciunt repellat perspiciatis. Nihil veniam rerum hic tempora.
+          Temporibus, fuga? Similique molestiae magni saepe neque voluptatum
+          ullam expedita corrupti? Quae nulla pariatur, dignissimos, ea fugit
+          placeat tenetur laborum harum et maxime perspiciatis ratione nemo
+          assumenda dolorem, expedita dicta praesentium culpa! Hic beatae
+          voluptatem aliquid nam exercitationem, expedita similique a nesciunt,
+          sit ipsam minima deserunt? Cumque veniam sit sunt. Voluptas culpa
+          doloribus sint dolore mollitia recusandae voluptatibus possimus
+          aliquam autem magnam. Eos ad cum.
+        </p>
       </div>
       <a
         class="text-2xl hover:underline decoration-highlight text-regularText"
         href={"../"}>{t("nav.goBack")}</a
       >
     </div>
-    <LinksFooter class="pb-2" />
+    <!-- <LinksFooter class="pb-2" /> -->
   </SinglePageContainer>
 </LayoutWithTransitions>

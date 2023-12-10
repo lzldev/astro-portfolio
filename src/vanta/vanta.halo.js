@@ -49,6 +49,8 @@ class Halo extends ShaderBase {
     };
   }
   onUpdate() {
+    console.log(this.uniforms);
+
     this.uniforms.iBuffer.value = this.bufferFeedback.texture;
 
     const renderer = this.renderer;

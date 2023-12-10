@@ -8,10 +8,12 @@ export default {
     extend: {
       colors: {
         background: colors.neutral["400"],
+        surfaceBackground: colors.neutral["600"],
         backgroundDark: colors.neutral["900"],
         darkBackground: colors.neutral["900"],
         accent: colors.neutral["500"],
         highlight: colors.neutral["600"],
+        underlight: colors.neutral["900"],
         regularText: colors.neutral["300"],
         highlightOff: colors.neutral["500"],
         footerLink: colors.neutral["400"],

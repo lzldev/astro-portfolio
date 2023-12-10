@@ -2,7 +2,6 @@
 import DarkModeHeader from "../components/DarkModeHeader.astro";
 import DefaultHeader from "../components/DefaultHeader.astro";
 import DarkModeToggle from "../components/Preact/DarkModeToggle";
-import ThreeCanvas from "../components/ThreeCanvas.astro";
 interface Props {
   title: string;
 }
@@ -19,7 +18,8 @@ const { title } = Astro.props;
     <DarkModeHeader />
   </head>
   <body
-    class="bg-background dark:bg-backgroundDark transition-colors selection:bg-highlightOff relative overflow-x-hidden"
+    transition:persist="body"
+    class="bg-background dark:bg-backgroundDark transition-colors selection:bg-highlightOff relative overflow-x-hidden antialiased"
   >
     <slot />
     <DarkModeToggle client:only />
