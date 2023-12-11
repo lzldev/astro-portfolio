@@ -1,14 +1,17 @@
 import { defineConfig } from "astro/config";
-import tailwind from "@astrojs/tailwind";
 
+import vercel from "@astrojs/vercel/static";
+import tailwind from "@astrojs/tailwind";
 import preact from "@astrojs/preact";
 
 // https://astro.build/config
 export default defineConfig({
+  output: "static",
+  adapter: vercel(),
   integrations: [tailwind(), preact()],
-  // redirects: {
-  //   "/": "/pt-br/",
-  // },
+  redirects: {
+    "/": "/pt-br/",
+  },
   i18n: {
     defaultLocale: "pt-br",
     locales: ["en", "pt-br"],
@@ -21,5 +24,8 @@ export default defineConfig({
     build: {
       minify: "terser",
     },
+  },
+  experimental: {
+    optimizeHoistedScript: true,
   },
 });
