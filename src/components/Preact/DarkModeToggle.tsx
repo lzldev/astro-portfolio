@@ -7,6 +7,8 @@ export default function ThemeToggle() {
     setTheme(theme === "light" ? "dark" : "light");
   };
 
+  console.log(theme);
+
   useEffect(() => {
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
@@ -29,7 +31,7 @@ export default function ThemeToggle() {
 function DarkModeIcon() {
   return (
     <svg
-      className={"fill-regular-text m-auto"}
+      className={"m-auto fill-regular-text"}
       xmlns="http://www.w3.org/2000/svg"
       height="48"
       viewBox="0 -960 960 960"
@@ -43,7 +45,7 @@ function DarkModeIcon() {
 function LightModeIcon() {
   return (
     <svg
-      className={"fill-regular-text m-auto"}
+      className={"m-auto fill-regular-text"}
       xmlns="http://www.w3.org/2000/svg"
       height="48"
       viewBox="0 -960 960 960"

@@ -1,36 +1,20 @@
 ---
-import type { GetStaticPaths } from "astro";
 import { Icon } from "astro-icon";
 import BlinkingText from "../../components/Preact/BlinkingText";
 import ThreeCanvas from "../../components/ThreeCanvas.astro";
-import { ui } from "../../i18n/ui";
-import {
-  getLangFromUrl,
-  useRelativeLocaleURL,
-  useTranslations,
-} from "../../i18n/utils";
+import { generateStaticPaths, useI18n } from "../../i18n/ui";
 import Layout from "../../layouts/Layout.astro";
 import Wrapper from "../../components/Wrapper.astro";
 
-export const getStaticPaths = (() => {
-  return Object.keys(ui).map((lang) => ({
-    params: {
-      locale: lang,
-    },
-  }));
-}) satisfies GetStaticPaths;
+const { getRelativeUrl, useI18Text: t } = useI18n(Astro.url);
 
-const getLink = useRelativeLocaleURL(Astro.url);
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+export const getStaticPaths = generateStaticPaths;
 ---
 
-<Layout title="Home">
+<Layout title={t("nav.home")} transition:persist="body">
   <ThreeCanvas>
     <Wrapper>
-      <div
-        class="flex flex-1 flex-grow px-10 py-6 md:max-w-md md:px-4 flex-col"
-      >
+      <div class="flex my-auto px-10 py-6 md:max-w-md md:px-4 flex-col">
         <BlinkingText
           text="NAME HERE HERE NAME"
           class:list={"text-2xl font-bold"}
@@ -68,10 +52,10 @@ const t = useTranslations(lang);
         <div class="flex gap-x-2">
           <a
             class="group/link flex items-center ring-opacity-40 ring-2 ring-gray-200 bg-opacity-40 hover:bg-gray-200 hover:text-background transition-colors rounded-md p-2"
-            href="./resume"
+            href={getRelativeUrl("/resume")}
           >
             <span class="flex-grow mr-16">
-              {t("but.cv")}
+              {t("nav.cv")}
             </span>
             <Icon
               name="radix-icons:chevron-right"
@@ -82,7 +66,7 @@ const t = useTranslations(lang);
           </a>
           <a
             class="group/pdf flex items-center ring-opacity-40 ring-2 ring-gray-200 bg-opacity-40 hover:bg-gray-200 hover:text-background transition-colors rounded-md p-2"
-            href="./resumepdf"
+            href={getRelativeUrl("/resume.pdf")}
           >
             <Icon
               name="radix-icons:download"

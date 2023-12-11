@@ -1,0 +1,56 @@
+---
+import ThreeCanvas from "../../components/ThreeCanvas.astro";
+import { generateStaticPaths, useI18n } from "../../i18n/ui";
+import Layout from "../../layouts/Layout.astro";
+import Wrapper from "../../components/Wrapper.astro";
+import { getEntry } from "astro:content";
+import Prose from "../../components/Prose.astro";
+import { Icon } from "astro-icon";
+
+export const getStaticPaths = generateStaticPaths;
+
+const { getRelativeUrl, useI18Text: t } = useI18n(Astro.url);
+
+const resume = await getEntry("resume", "resume");
+const { Content } = await resume.render();
+---
+
+<Layout title={t("nav.cv")}>
+  <ThreeCanvas>
+    <Wrapper>
+      <div class="bg-background rounded-md bg-opacity-20 flex flex-col">
+        <div class="flex justify-between py-8 px-8 pb-4">
+          <a
+            class="group/back flex items-center ring-opacity-40 ring-gray-200 bg-opacity-40 hover:bg-gray-200 hover:text-background transition-colors rounded-md p-2"
+            href={getRelativeUrl("../")}
+          >
+            <Icon
+              name="radix-icons:chevron-left"
+              alt="Arrow pointing left"
+              class="w-4 h-4 mr-1 group-hover/back:scale-125 duration-200"
+              loading="eager"
+            />
+            {t("nav.goBack")}
+          </a>
+          <a
+            class="group/pdf flex items-center ring-opacity-40 ring-2 ring-gray-200 bg-opacity-40 hover:bg-gray-200 hover:text-background transition-colors rounded-md p-2"
+            href={"../resume.pdf"}
+          >
+            <Icon
+              name="radix-icons:download"
+              alt="Download Icon"
+              class="w-4 h-4 mr-1 group-hover/pdf:scale-110"
+              loading="eager"
+            />
+            {t("download.cv")}
+          </a>
+        </div>
+        <div class="flex items-stretch justify-center px-16">
+          <Prose>
+            <Content />
+          </Prose>
+        </div>
+      </div>
+    </Wrapper>
+  </ThreeCanvas>
+</Layout>

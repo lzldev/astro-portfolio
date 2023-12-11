@@ -9,6 +9,11 @@ export default defineConfig({
   output: "static",
   adapter: vercel(),
   integrations: [tailwind(), preact()],
+  markdown: {
+    shikiConfig: {
+      theme: "rose-pine-moon",
+    },
+  },
   redirects: {
     "/": "/pt-br/",
   },
@@ -24,8 +29,5 @@ export default defineConfig({
     build: {
       minify: "terser",
     },
-  },
-  experimental: {
-    optimizeHoistedScript: true,
   },
 });

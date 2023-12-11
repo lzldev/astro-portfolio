@@ -2,30 +2,35 @@
 import DarkModeHeader from "../components/DarkModeHeader.astro";
 import DefaultHeader from "../components/DefaultHeader.astro";
 import DarkModeToggle from "../components/Preact/DarkModeToggle";
+import { useI18n } from "../i18n/ui";
 interface Props {
   title: string;
 }
 
 const { title } = Astro.props;
+const { lang } = useI18n(Astro.url);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <DefaultHeader {title} />
-    <DarkModeHeader />
   </head>
   <body
     transition:persist="body"
-    class="bg-background dark:bg-background-dark text-regular-text transition-colors selection:bg-highlightOff relative overflow-x-hidden antialiased"
+    class="bg-background dark:bg-background-dark text-regular-text transition-colors selection:bg-highlightOff relative antialiased"
   >
     <main
       transition:name="main"
       transition:animate="slide"
-      class="flex flex-col min-h-screen h-screen w-screen items-center justify-center max-w-[100vw] relative"
+      class="flex flex-col min-h-screen w-full relative"
     >
       <slot />
     </main>
-    <DarkModeToggle transition:persist="darkMode" client:only />
+    <DarkModeToggle
+      transition:name="darkMode"
+      transition:persist="darkMode"
+      client:only="preact"
+    />
   </body>
 </html>

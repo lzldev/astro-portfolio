@@ -2,4 +2,4 @@
 
 made with astro + tailwind
 
-threejs animations https://github.com/tengbao/vanta
+threejs animations forked from : https://github.com/tengbao/vanta
