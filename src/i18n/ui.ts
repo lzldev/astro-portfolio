@@ -9,7 +9,7 @@ export const ui = {
   en: {
     "nav.about": "Lorem ipsum",
     "nav.goBack": "go back",
-    "but.cv": "Curriculum",
+    "but.cv": "Resume",
   },
   "pt-br": {
     "nav.about": "Lorem impsum",

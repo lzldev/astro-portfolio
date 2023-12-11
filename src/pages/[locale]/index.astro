@@ -1,7 +1,8 @@
 ---
+import { Image, Picture } from "astro:assets";
 import type { GetStaticPaths } from "astro";
 import BlinkingText from "../../components/Preact/BlinkingText";
-import SinglePageContainer from "../../components/ThreeCanvas.astro";
+import ThreeCanvas from "../../components/ThreeCanvas.astro";
 import { ui } from "../../i18n/ui";
 import {
   getLangFromUrl,
@@ -9,6 +10,7 @@ import {
   useTranslations,
 } from "../../i18n/utils";
 import Layout from "../../layouts/Layout.astro";
+import Wrapper from "../../components/Wrapper.astro";
 
 export const getStaticPaths = (() => {
   return Object.keys(ui).map((lang) => ({
@@ -18,47 +20,81 @@ export const getStaticPaths = (() => {
   }));
 }) satisfies GetStaticPaths;
 
+import LinkedinIcon from "../../radix-icons/linkedin-logo.svg";
+import GithubIcon from "../../radix-icons/github-logo.svg";
+import ChevronRight from "../../radix-icons/chevron-right.svg";
+import Download from "../../radix-icons/download.svg";
+
 const getLink = useRelativeLocaleURL(Astro.url);
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
 <Layout title="Home">
-  <SinglePageContainer>
-    <!-- <CornerText className="top-0 -right-1/3 rotate-45" /> -->
-    <div class="mt-auto"></div>
-    <div
-      class="mx-auto gap-y-4 flex flex-col max-w-md w-full bg-surfaceBackground p-6 rounded-md bg-opacity-20 backdrop-blur-xl dark:bg-neutral-200 dark:bg-opacity-20"
-    >
-      <div class="text-left text-xl font-mono font-bold">
-        <!-- <p class="text-highlight text-3xl">NAME HEREHERE NAME</p> -->
+  <ThreeCanvas>
+    <Wrapper>
+      <div
+        class="flex flex-1 flex-grow px-10 py-6 md:max-w-md md:px-4 flex-col"
+      >
         <BlinkingText
-          text="NAME HEREHERE NAME"
-          class:list={"text-3xl"}
-          classOn="text-highlight"
-          classOff="text-regularText"
-          odds={0.8}
-          interval={2000}
+          text="NAME HERE HERE NAME"
+          class:list={"text-2xl font-bold"}
+          odds={0.2}
+          classOn="text-neutral-700"
+          classOff="text-neutral-400"
+          interval={500}
           client:load
         />
-        <span class="text-highlight">TS Developer</span>
+        <h1 class="tracking-tight text-neutral-600">TS DEVELOPER</h1>
+        <div class="bg-d-400 flex gap-x-3 py-4">
+          <div class="flex items-center gap-x-2">
+            <Picture
+              src={LinkedinIcon}
+              alt="Linkedin Logo"
+              class="w-8 h-8"
+              loading="eager"
+            />
+            <span>Linkedin</span>
+          </div>
+          <a class="flex items-center gap-x-2 hover:underline">
+            <Image
+              src={GithubIcon}
+              alt="Github Logo"
+              class="w-8 h-8"
+              loading="eager"
+            />
+            <span>Github</span>
+          </a>
+        </div>
+        <div class="flex gap-x-2">
+          <a
+            class="flex items-center ring-opacity-40 ring-2 ring-gray-200 bg-opacity-40 hover:bg-gray-200 hover:text-background transition-colors rounded-md p-2"
+            href="./resume"
+          >
+            <span class="flex-grow mr-16">
+              {t("but.cv")}
+            </span>
+            <Image
+              src={ChevronRight}
+              alt="Right Icon"
+              class="w-4 h-4"
+              loading="eager"
+            />
+          </a>
+          <a
+            class="flex items-center ring-opacity-40 ring-2 ring-gray-200 bg-opacity-40 hover:bg-gray-200 hover:text-background transition-colors rounded-md p-2"
+            href="./resumepdf"
+          >
+            <Image
+              src={Download}
+              alt="Download Icon"
+              class="w-4 h-4 mr-1"
+              loading="eager"
+            />
+             .pdf
+          </a>
+        </div>
       </div>
-      <a
-        href={getLink("about")}
-        class={"p-3 group/card hover:cursor-pointer selection:bg-transparent rounded-md backdrop-shadow-md ring-opacity-40 ring-2 ring-regularText drop-shadow-xl bg-opacity-40 hover:bg-regularText transition-colors"}
-      >
-        <span
-          class="text-xl text-left font-bold font-mono group-hover/card:text-neutral-800 transition-colors"
-          transition:name="title"
-          transition:animate="slide"
-          >{t("nav.about")}
-        </span>
-        <span class="float-right"> &rarr;</span>
-      </a>
-      <!-- <StartCard title={t("nav.about")} href={getLink("/about")} /> -->
-      <!-- <StartCard title={t("nav.about")} href={getLink("/about")} /> -->
-    </div>
-    <div class="mt-auto"></div>
-    <!-- <LinksFooter class="pb-2" /> -->
-  </SinglePageContainer>
+    </Wrapper>
+  </ThreeCanvas>
 </Layout>
