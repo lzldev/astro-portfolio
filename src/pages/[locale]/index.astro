@@ -1,7 +1,6 @@
 ---
 import type { GetStaticPaths } from "astro";
-
-import { Image, Picture } from "astro:assets";
+import { Icon } from "astro-icon";
 import BlinkingText from "../../components/Preact/BlinkingText";
 import ThreeCanvas from "../../components/ThreeCanvas.astro";
 import { ui } from "../../i18n/ui";
@@ -20,11 +19,6 @@ export const getStaticPaths = (() => {
     },
   }));
 }) satisfies GetStaticPaths;
-
-import LinkedinIcon from "../../radix-icons/linkedin-logo.svg";
-import GithubIcon from "../../radix-icons/github-logo.svg";
-import ChevronRight from "../../radix-icons/chevron-right.svg";
-import Download from "../../radix-icons/download.svg";
 
 const getLink = useRelativeLocaleURL(Astro.url);
 const lang = getLangFromUrl(Astro.url);
@@ -46,50 +40,54 @@ const t = useTranslations(lang);
           interval={500}
           client:load
         />
-        <h1 class="tracking-tight text-neutral-600">TS DEVELOPER</h1>
-        <div class="bg-d-400 flex gap-x-3 py-4">
-          <div class="flex items-center gap-x-2">
-            <Picture
-              src={LinkedinIcon}
-              alt="Linkedin Logo"
-              class="w-8 h-8"
-              loading="eager"
+        <h1 class="tracking-tight text-neutral-600 text-muted">TS DEVELOPER</h1>
+        <div class="bg-d-400 flex gap-x-2 py-4">
+          <a
+            class="group/link flex items-center gap-x-1 underline-offset-2 hover:underline"
+            href=""
+          >
+            <Icon
+              class="h-8 w-8 group-hover/link:scale-105 transition-transform duration-200"
+              name="mdi:linkedin"
+              alt="Linkedin Icon"
             />
             <span>Linkedin</span>
-          </div>
-          <a class="flex items-center gap-x-2 hover:underline">
-            <Image
-              src={GithubIcon}
-              alt="Github Logo"
-              class="w-8 h-8"
-              loading="eager"
+          </a>
+          <a
+            class="group/link flex items-center gap-x-2 underline-offset-2 hover:underline"
+            href=""
+          >
+            <Icon
+              class="h-8 w-8 group-hover/link:scale-105 transition-transform duration-200"
+              name="radix-icons:github-logo"
+              alt="Github Icon"
             />
             <span>Github</span>
           </a>
         </div>
         <div class="flex gap-x-2">
           <a
-            class="flex items-center ring-opacity-40 ring-2 ring-gray-200 bg-opacity-40 hover:bg-gray-200 hover:text-background transition-colors rounded-md p-2"
+            class="group/link flex items-center ring-opacity-40 ring-2 ring-gray-200 bg-opacity-40 hover:bg-gray-200 hover:text-background transition-colors rounded-md p-2"
             href="./resume"
           >
             <span class="flex-grow mr-16">
               {t("but.cv")}
             </span>
-            <Image
-              src={ChevronRight}
+            <Icon
+              name="radix-icons:chevron-right"
               alt="Right Icon"
-              class="w-4 h-4"
+              class="w-4 h-4 group-hover/link:scale-110"
               loading="eager"
             />
           </a>
           <a
-            class="flex items-center ring-opacity-40 ring-2 ring-gray-200 bg-opacity-40 hover:bg-gray-200 hover:text-background transition-colors rounded-md p-2"
+            class="group/pdf flex items-center ring-opacity-40 ring-2 ring-gray-200 bg-opacity-40 hover:bg-gray-200 hover:text-background transition-colors rounded-md p-2"
             href="./resumepdf"
           >
-            <Image
-              src={Download}
+            <Icon
+              name="radix-icons:download"
               alt="Download Icon"
-              class="w-4 h-4 mr-1"
+              class="w-4 h-4 mr-1 group-hover/pdf:scale-110"
               loading="eager"
             />
              .pdf
