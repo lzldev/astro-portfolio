@@ -8,15 +8,16 @@ export default {
     extend: {
       colors: {
         background: colors.neutral["400"],
-        surfaceBackground: colors.neutral["600"],
-        backgroundDark: colors.neutral["900"],
-        darkBackground: colors.neutral["900"],
+        "background-dark": colors.neutral["900"],
+        surface: colors.neutral["600"],
+        "surface-dark": colors.neutral["900"],
         accent: colors.neutral["500"],
         highlight: colors.neutral["600"],
-        underlight: colors.neutral["900"],
-        regularText: colors.neutral["300"],
-        highlightOff: colors.neutral["500"],
-        footerLink: colors.neutral["400"],
+        "regular-text": colors.neutral["300"],
+        "text-muted": colors.neutral["700"],
+        "text-muted-dark": colors.neutral["700"],
+        "highlight-off": colors.neutral["500"],
+        "footer-link": colors.neutral["400"],
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

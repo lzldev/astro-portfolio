@@ -29,7 +29,7 @@ export default function ThemeToggle() {
 function DarkModeIcon() {
   return (
     <svg
-      className={"m-auto fill-regularText"}
+      className={"fill-regular-text m-auto"}
       xmlns="http://www.w3.org/2000/svg"
       height="48"
       viewBox="0 -960 960 960"
@@ -43,7 +43,7 @@ function DarkModeIcon() {
 function LightModeIcon() {
   return (
     <svg
-      className={"m-auto fill-regularText"}
+      className={"fill-regular-text m-auto"}
       xmlns="http://www.w3.org/2000/svg"
       height="48"
       viewBox="0 -960 960 960"
