@@ -12,23 +12,23 @@ export default defineConfig({
   integrations: [tailwind(), preact(), mdx()],
   markdown: {
     shikiConfig: {
-      theme: "rose-pine-moon"
-    }
+      theme: "rose-pine-moon",
+    },
   },
   redirects: {
-    "/": "/pt-br/"
+    "/": "/pt-br/",
   },
   i18n: {
     defaultLocale: "pt-br",
     locales: ["en", "pt-br"],
     routing: {
       prefixDefaultLocale: true,
-      strategy: "pathname"
-    }
+      strategy: "pathname",
+    },
   },
   vite: {
     build: {
-      minify: "terser"
-    }
-  }
+      minify: "terser",
+    },
+  },
 });

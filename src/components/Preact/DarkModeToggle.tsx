@@ -23,7 +23,7 @@ export default function ThemeToggle() {
       className="absolute right-4 top-4 z-50 flex h-8 w-8 items-center justify-center"
       onClick={handleClick}
     >
-      {theme === "light" ? <DarkModeIcon /> : <LightModeIcon />}
+      {theme === "dark" ? <DarkModeIcon /> : <LightModeIcon />}
     </div>
   );
 }
