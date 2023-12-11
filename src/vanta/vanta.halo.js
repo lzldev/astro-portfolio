@@ -49,8 +49,6 @@ class Halo extends ShaderBase {
     };
   }
   onUpdate() {
-    console.log(this.uniforms);
-
     this.uniforms.iBuffer.value = this.bufferFeedback.texture;
 
     const renderer = this.renderer;
@@ -85,6 +83,6 @@ class Halo extends ShaderBase {
   }
 }
 
-import HaloShader from "./shaders/halo2.frag?raw";
+import HaloShader from "./shaders/halo3.frag?raw";
 Halo.prototype.fragmentShader = HaloShader;
 export { Halo };
