@@ -83,6 +83,6 @@ class Halo extends ShaderBase {
   }
 }
 
-import HaloShader from "./shaders/halo2.frag?raw";
+import HaloShader from "./shaders/halo3.frag?raw";
 Halo.prototype.fragmentShader = HaloShader;
 export { Halo };
