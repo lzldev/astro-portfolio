@@ -1,6 +1,7 @@
 import type { GetStaticPaths } from "astro"
 import { getLangFromUrl, useRelativeLocaleURL, useTranslations } from "./utils"
 import type { Prettify } from "../utils/types"
+import { getRelativeLocaleUrl } from "astro:i18n"
 
 export const SupportedLanguagesNames = {
   "pt-br": "Português",
@@ -37,8 +38,8 @@ export const generateStaticPaths = (() => {
 }) satisfies GetStaticPaths
 
 export const useI18n = (url: URL) => {
-  const getRelativeUrl = useRelativeLocaleURL(url)
   const lang = getLangFromUrl(url)
+  const getRelativeUrl = (path: string) => getRelativeLocaleUrl(lang, path)
   const useI18Text = useTranslations(lang)
 
   return {

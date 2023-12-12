@@ -11,7 +11,7 @@ const { getRelativeUrl, useI18Text: t } = useI18n(Astro.url)
 export const getStaticPaths = generateStaticPaths
 ---
 
-<Layout title={t("nav.home")} transition:persist="body">
+<Layout title={t("nav.home")}>
   <ThreeCanvas>
     <Wrapper>
       <div class="flex my-auto px-10 py-6 md:max-w-md md:px-4 flex-col">
@@ -78,13 +78,14 @@ export const getStaticPaths = generateStaticPaths
           </a>
         </div>
       </div>
-      <span class="absolute right-8 bottom-8"
-        >Source
+      <span class="absolute right-8 bottom-8">
+        Source
         <span class="font-semibold">@</span><a
           class="font-semibold hover:underline"
-          href="https://github.com/lzldev/astro-portfolio">lzldev</a
-        ></span
-      >
+          href="https://github.com/lzldev/astro-portfolio"
+          >lzldev
+        </a>
+      </span>
     </Wrapper>
   </ThreeCanvas>
 </Layout>
