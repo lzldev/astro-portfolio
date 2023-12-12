@@ -1,19 +1,19 @@
 ---
-import ThreeCanvas from "../../../components/ThreeCanvas.astro";
-import { generateStaticPaths, useI18n } from "../../../i18n/ui";
-import Layout from "../../../layouts/Layout.astro";
-import Wrapper from "../../../components/Wrapper.astro";
-import { getEntry } from "astro:content";
-import Prose from "../../../components/Prose.astro";
-import { Icon } from "astro-icon";
+import ThreeCanvas from "../../components/ThreeCanvas.astro"
+import { generateStaticPaths, useI18n } from "../../i18n/ui"
+import Layout from "../../layouts/Layout.astro"
+import Wrapper from "../../components/Wrapper.astro"
+import { getEntry } from "astro:content"
+import Prose from "../../components/Prose.astro"
+import { Icon } from "astro-icon"
 
-export const getStaticPaths = generateStaticPaths;
+export const getStaticPaths = generateStaticPaths
 
-const { getRelativeUrl, useI18Text: t, lang } = useI18n(Astro.url);
+const { getRelativeUrl, useI18Text: t, lang } = useI18n(Astro.url)
 
-const resume = await getEntry("resume", `${lang}/resume`);
+const resume = await getEntry("resume", `${lang}/resume`)
 
-const { Content } = await resume.render();
+const { Content } = await resume.render()
 ---
 
 <Layout title={t("nav.cv")}>

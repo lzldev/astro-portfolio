@@ -1,12 +1,17 @@
-import type { GetStaticPaths } from "astro";
-import { getLangFromUrl, useRelativeLocaleURL, useTranslations } from "./utils";
+import type { GetStaticPaths } from "astro"
+import { getLangFromUrl, useRelativeLocaleURL, useTranslations } from "./utils"
+import type { Prettify } from "../utils/types"
 
-export const languages = {
+export const SupportedLanguagesNames = {
+  "pt-br": "Português",
   en: "English",
-  pt: "Português",
-};
+} as const
 
-export const defaultLang = "pt-br";
+export const SupportedLanguages = Object.keys(
+  SupportedLanguagesNames,
+) as SupportedLanguages[]
+
+export const defaultLang = "pt-br" as const satisfies SupportedLanguages
 
 export const ui = {
   "pt-br": {
@@ -21,26 +26,42 @@ export const ui = {
     "nav.goBack": "go back",
     "download.cv": "Download as PDF",
   },
-} as const;
+} satisfies i18nFields
 
 export const generateStaticPaths = (() => {
   return Object.keys(ui).map((lang) => ({
     params: {
       locale: lang,
     },
-  }));
-}) satisfies GetStaticPaths;
+  }))
+}) satisfies GetStaticPaths
 
-const useI18n = (url: URL) => {
-  const getRelativeUrl = useRelativeLocaleURL(url);
-  const lang = getLangFromUrl(url);
-  const useI18Text = useTranslations(lang);
+export const useI18n = (url: URL) => {
+  const getRelativeUrl = useRelativeLocaleURL(url)
+  const lang = getLangFromUrl(url)
+  const useI18Text = useTranslations(lang)
 
   return {
     useI18Text,
     lang,
     getRelativeUrl,
-  };
-};
+  }
+}
 
-export { useI18n };
+export type SupportedLanguages = keyof typeof SupportedLanguagesNames
+
+export type i18Type = {
+  "nav.home": string
+  "nav.cv": string
+  "nav.goBack": string
+  "download.cv": string
+}
+
+/* 
+  Requires default language to be complete 
+    and all other languages to be partial.
+ */
+export type i18nFields = Prettify<
+  Record<typeof defaultLang, Required<i18Type>> &
+    Omit<Record<SupportedLanguages, Partial<i18Type>>, "pt-br">
+>

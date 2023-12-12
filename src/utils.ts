@@ -1,8 +1,8 @@
-import config from "../tailwind.config.mjs";
-import resolveConfig from "tailwindcss/resolveConfig";
+import config from "../tailwind.config.mjs"
+import resolveConfig from "tailwindcss/resolveConfig"
 
 function getTailwindConfig() {
-  return resolveConfig(config);
+  return resolveConfig(config)
 }
 
-export { getTailwindConfig };
+export { getTailwindConfig }

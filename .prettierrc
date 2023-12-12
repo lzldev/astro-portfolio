@@ -9,5 +9,6 @@
   ],
   "plugins": ["prettier-plugin-tailwindcss", "prettier-plugin-astro"],
   "tabWidth": 2,
-  "useTabs": false
+  "useTabs": false,
+  "semi": false
 }
