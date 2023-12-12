@@ -1,13 +1,13 @@
 ---
-import DefaultHeader from "../components/DefaultHeader.astro";
-import DarkModeToggle from "../components/Preact/DarkModeToggle";
-import { useI18n } from "../i18n/ui";
+import DefaultHeader from "../components/DefaultHeader.astro"
+import DarkModeToggle from "../components/Preact/DarkModeToggle"
+import { useI18n } from "../i18n/ui"
 interface Props {
-  title: string;
+  title: string
 }
 
-const { title } = Astro.props;
-const { lang } = useI18n(Astro.url);
+const { title } = Astro.props
+const { lang } = useI18n(Astro.url)
 ---
 
 <!doctype html>

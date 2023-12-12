@@ -1,10 +1,10 @@
 // http://thebookofshaders.com/13/
 // Original effect by Patricio Gonzalez Vivo
 
-import ShaderBase, { VANTA } from "./_shaderBase.js";
+import ShaderBase, { VANTA } from "./_shaderBase.js"
 
 class Fog extends ShaderBase {}
-export default VANTA.register("FOG", Fog);
+export default VANTA.register("FOG", Fog)
 
 Fog.prototype.defaultOptions = {
   highlightColor: 0xffc300, // 0xaaffff
@@ -16,7 +16,7 @@ Fog.prototype.defaultOptions = {
   zoom: 1.0,
   scale: 2,
   scaleMobile: 4,
-};
+}
 
 Fog.prototype.fragmentShader = `\
 uniform vec2 iResolution;
@@ -106,4 +106,4 @@ void main() {
   vec3 finalColor = mix(baseColor, color, f*f*f+.6*f*f+.5*f);
   gl_FragColor = vec4(finalColor,1.0);
 }
-`;
+`
