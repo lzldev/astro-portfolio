@@ -10,7 +10,6 @@ export default function ThemeToggle() {
   const lock = useRef(false)
 
   useEffect(() => {
-    console.log("eff")
     if (lock.current === false) {
       lock.current = true
       return
