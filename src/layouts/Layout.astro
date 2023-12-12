@@ -1,5 +1,4 @@
 ---
-import DarkModeHeader from "../components/DarkModeHeader.astro";
 import DefaultHeader from "../components/DefaultHeader.astro";
 import DarkModeToggle from "../components/Preact/DarkModeToggle";
 import { useI18n } from "../i18n/ui";
@@ -12,12 +11,11 @@ const { lang } = useI18n(Astro.url);
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang={lang} transition:persist>
   <head>
     <DefaultHeader {title} />
   </head>
   <body
-    transition:persist="body"
     class="bg-background selection:bg-highlight dark:bg-background-dark text-regular-text transition-colors selection:bg-highlightOff relative antialiased"
   >
     <main

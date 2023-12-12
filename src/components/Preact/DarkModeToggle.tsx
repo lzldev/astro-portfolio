@@ -1,4 +1,4 @@
-import { useEffect, useState } from "preact/hooks";
+import { useEffect, useRef, useState } from "preact/hooks";
 
 export default function ThemeToggle() {
   const [theme, setTheme] = useState(localStorage.getItem("theme") ?? "light");
@@ -7,14 +7,21 @@ export default function ThemeToggle() {
     setTheme(theme === "light" ? "dark" : "light");
   };
 
-  console.log(theme);
+  const lock = useRef(false);
 
   useEffect(() => {
+    console.log("eff");
+    if (lock.current === false) {
+      lock.current = true;
+      return;
+    }
+
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
     } else {
       document.documentElement.classList.remove("dark");
     }
+
     localStorage.setItem("theme", theme);
   }, [theme]);
 
