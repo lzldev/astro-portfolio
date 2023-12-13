@@ -1,5 +1,4 @@
-import { useSignal } from "@preact/signals"
-import { useEffect } from "preact/hooks"
+import { useEffect, useState } from "preact/hooks"
 
 const rng = Math.random
 
@@ -19,13 +18,13 @@ export default function BText({
   odds = 0.5,
   ...props
 }: BTextProps) {
-  const blinking = useSignal<boolean[]>(new Array(text.length).fill(false))
+  const [blinking, setBlinking] = useState<boolean[]>(
+    new Array(text.length).fill(false),
+  )
 
   useEffect(() => {
     const fn = setInterval(() => {
-      blinking.value = new Array(text.length)
-        .fill(false)
-        .map(() => rng() > odds)
+      setBlinking(new Array(text.length).fill(false).map(() => rng() > odds))
     }, interval)
 
     return () => {
@@ -35,7 +34,7 @@ export default function BText({
 
   return (
     <p {...props}>
-      {blinking.value.map((blink, idx) => (
+      {blinking.map((blink, idx) => (
         <span className={blink ? classOn : classOff}>{text[idx]}</span>
       ))}
     </p>

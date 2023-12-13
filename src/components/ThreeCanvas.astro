@@ -2,22 +2,20 @@
   <slot />
   <div
     id="animation-root"
-    transition:persist="bg-canvas"
     transition:animate="none"
+    transition:persist="animation-root"
     class="absolute -z-50 min-h-screen w-full motion-reduce:hidden"
   >
   </div>
   <script>
     import { Halo } from "../vanta/vanta.halo"
 
-    new Halo({
+    const h = new Halo({
       el: "#animation-root",
       backgroundAlpha: 0,
-      mouseControls: true,
-      touchControls: true,
+      mouseControls: false,
+      touchControls: false,
       gyroControls: false,
-      // minHeight: 200.0,
-      // minWidth: 200.0,
       scale: 1.0,
       minWidth: 200.0,
       minHeight: 200.0,
@@ -33,5 +31,7 @@
       color2: 0xff0000,
       backgroundColor: 0x0,
     })
+
+    document.addEventListener("astro:after-swap", h.resize)
   </script>
 </Fragment>

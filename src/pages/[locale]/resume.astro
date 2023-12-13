@@ -20,10 +20,11 @@ const { Content } = await resume.render()
   <ThreeCanvas>
     <Wrapper>
       <div class="bg-background rounded-md bg-opacity-20 flex flex-col py-8">
-        <div class="flex justify-between pb-4 px-8">
+        <div class="flex justify-between pb-4 px-4 md:px-8">
           <a
             class="group/back flex items-center ring-opacity-40 ring-gray-200 bg-opacity-40 hover:bg-gray-200 hover:text-background transition-colors rounded-md p-2"
             href={getRelativeUrl("../")}
+            astro-data-history="replace"
           >
             <Icon
               name="radix-icons:chevron-left"
@@ -46,7 +47,7 @@ const { Content } = await resume.render()
             {t("download.cv")}
           </a>
         </div>
-        <div class="flex items-stretch justify-center px-16">
+        <div class="flex items-stretch justify-center px-8 md:px-16">
           <Prose>
             <Content />
           </Prose>

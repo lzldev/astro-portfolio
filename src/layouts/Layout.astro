@@ -1,7 +1,9 @@
 ---
 import DefaultHeader from "../components/DefaultHeader.astro"
-import DarkModeToggle from "../components/Preact/DarkModeToggle"
+import { DarkModeSkeleton } from "../components/Preact/DarkModeSkeleton"
 import { useI18n } from "../i18n/ui"
+import { Icon } from "astro-icon"
+
 interface Props {
   title: string
 }
@@ -25,10 +27,15 @@ const { lang } = useI18n(Astro.url)
     >
       <slot />
     </main>
-    <DarkModeToggle
-      transition:name="darkMode"
-      transition:persist="darkMode"
+    <DarkModeSkeleton
       client:only="preact"
-    />
+      className="absolute min-h-[1vh] min-w-[1vw] left-4 top-4 z-50 flex h-7 w-7 items-center justify-center"
+      transition:name="darkMode"
+      Dark
+      Light
+    >
+      <Icon slot="Dark" name="radix-icons:moon" />
+      <Icon slot="Light" name="radix-icons:sun" />
+    </DarkModeSkeleton>
   </body>
 </html>
