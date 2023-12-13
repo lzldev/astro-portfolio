@@ -331,9 +331,9 @@ _strk.push(function() {
 
     // Don't show the property if its value is just the default value
     var defaultOptions =
-      typeof effect.getDefaultOptions === "function"
-        ? effect.getDefaultOptions()
-        : effect.defaultOptions
+      typeof effect.getDefaultOptions === "function" ?
+        effect.getDefaultOptions()
+      : effect.defaultOptions
     var shouldShowProperty = v !== defaultOptions[k]
     if (k == "backgroundAlpha" && v == 1) shouldShowProperty = false
     if (shouldShowProperty) {
@@ -422,8 +422,8 @@ class FPS {
     fpsOut = document.getElementById("fps")
     setInterval(() => {
       this.fps = 1000 / this.frameTime
-      return fpsOut != null
-        ? (fpsOut.innerHTML = this.fps.toFixed(1) + " fps")
+      return fpsOut != null ?
+          (fpsOut.innerHTML = this.fps.toFixed(1) + " fps")
         : void 0
     }, 250)
   }

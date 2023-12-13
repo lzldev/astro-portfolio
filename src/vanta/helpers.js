@@ -38,8 +38,9 @@ export const color2Hex = (color) => {
 export const color2Rgb = (color, alpha = 1) => {
   const hex = color2Hex(color)
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
-  const obj = result
-    ? {
+  const obj =
+    result ?
+      {
         r: parseInt(result[1], 16),
         g: parseInt(result[2], 16),
         b: parseInt(result[3], 16),

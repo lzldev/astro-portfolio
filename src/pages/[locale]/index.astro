@@ -5,6 +5,7 @@ import ThreeCanvas from "../../components/ThreeCanvas.astro"
 import { generateStaticPaths, useI18n } from "../../i18n/ui"
 import Layout from "../../layouts/Layout.astro"
 import Wrapper from "../../components/Wrapper.astro"
+import SeeAlso from "../../components/SeeAlso.astro"
 
 const { getRelativeUrl, useI18Text: t } = useI18n(Astro.url)
 
@@ -78,6 +79,7 @@ export const getStaticPaths = generateStaticPaths
           </a>
         </div>
       </div>
+      <SeeAlso />
       <span class="absolute right-8 bottom-8">
         Source
         <span class="font-semibold">@</span><a

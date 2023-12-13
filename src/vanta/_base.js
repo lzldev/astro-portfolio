@@ -51,9 +51,9 @@ class VantaBase {
     this.restart = this.restart.bind(this)
 
     const defaultOptions =
-      typeof this.getDefaultOptions === "function"
-        ? this.getDefaultOptions()
-        : this.defaultOptions
+      typeof this.getDefaultOptions === "function" ?
+        this.getDefaultOptions()
+      : this.defaultOptions
 
     this.options = Object.assign(
       {
@@ -273,9 +273,9 @@ class VantaBase {
     }
     const xNorm = x / this.width // 0 to 1
     const yNorm = y / this.height // 0 to 1
-    typeof this.onMouseMove === "function"
-      ? this.onMouseMove(xNorm, yNorm)
-      : void 0
+    typeof this.onMouseMove === "function" ?
+      this.onMouseMove(xNorm, yNorm)
+    : void 0
   }
 
   setSize() {
