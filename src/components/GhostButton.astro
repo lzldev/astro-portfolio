@@ -1,0 +1,38 @@
+---
+import { Icon } from "astro-icon"
+import type { HTMLAttributes } from "astro/types"
+
+export interface Props extends HTMLAttributes<"a"> {
+  text: string
+  stealth?: true
+  icon?: string
+  side?: "left" | "right"
+  inverted?: boolean
+}
+
+const {
+  text,
+  stealth,
+  icon = "radix-icons:chevron-right",
+  side = "right",
+  ...props
+} = Astro.props
+---
+
+<a
+  class:list={[
+    "group/link flex items-center ring-opacity-40 bg-opacity-40 hover:bg-gray-200 hover:text-background transition-colors rounded-md p-2 gap-x-2 selection:bg-transparent cursor-pointer",
+    !stealth && "ring-2 ring-gray-200",
+    props["class"],
+  ]}
+  {...props}
+>
+  {side === "right" && <span class="flex-grow">{text}</span>}
+  <Icon
+    name={icon}
+    alt="Right Icon"
+    class="w-4 h-5 group-hover/link:scale-110"
+    loading="eager"
+  />
+  {side === "left" && <span class="text-end">{text}</span>}
+</a>
