@@ -1,13 +1,9 @@
-import type {
-  Component,
-  ComponentChild,
-  ComponentProps,
-  FunctionComponent,
-  VNode,
-} from "preact"
+import type { ComponentProps, FunctionComponent } from "preact"
+
 import { useEffect, useState } from "preact/hooks"
 
 const root = document.documentElement
+
 export function DarkModeSkeleton({
   Dark,
   Light,

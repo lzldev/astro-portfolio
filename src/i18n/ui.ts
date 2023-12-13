@@ -63,7 +63,6 @@ export const useI18n = (url: URL) => {
   }
 }
 
-import type { GetStaticPaths } from "astro"
 import type { Prettify } from "../utils/types"
 
 type DefaultLanguage = typeof defaultLang

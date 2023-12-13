@@ -18,7 +18,7 @@ export const getStaticPaths = (() => {
   }))
 }) satisfies GetStaticPaths
 
-const mdxToPDF = await unified()
+const mdxToPDF = unified()
   .use(remarkParse)
   .use(remarkMdx)
   .use(remarkPdf, {
@@ -31,7 +31,6 @@ export const GET: APIRoute = async ({ url }) => {
   const { lang } = useI18n(url)
 
   const entry = await getEntry("resume", `${lang}/resume`)
-  const entry2 = await getEntry("resume", `${"test"}/resume`)
 
   const comp = await mdxToPDF.process(entry.body)
   const result = (await comp.result) as Buffer
