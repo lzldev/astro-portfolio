@@ -34,8 +34,20 @@ const { lang } = useI18n(Astro.url)
       Dark
       Light
     >
-      <Icon slot="Dark" name="radix-icons:moon" loading="eager" />
-      <Icon slot="Light" name="radix-icons:sun" loading="eager" />
+      <Icon
+        width="2em"
+        height="2em"
+        slot="Dark"
+        name="radix-icons:moon"
+        loading="eager"
+      />
+      <Icon
+        width="2em"
+        height="2em"
+        slot="Light"
+        name="radix-icons:sun"
+        loading="eager"
+      />
     </DarkModeSkeleton>
   </body>
 </html>
