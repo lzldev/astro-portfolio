@@ -1,0 +1,36 @@
+---
+import type { HTMLAttributes } from "astro/types"
+import { Icon } from "astro-icon"
+
+export interface Props extends HTMLAttributes<"a"> {
+  icon?: string
+  text: string
+  alt: string
+  underline?: boolean
+  side?: "left" | "right"
+}
+
+const {
+  icon = "radix-icons:chevron-right",
+  side = "right",
+  text,
+  alt,
+  ...props
+} = Astro.props
+---
+
+<a
+  class:list={[
+    "group/link flex items-center gap-x-2 underline-offset-2 hover:underline",
+    props["class"],
+  ]}
+  {...props}
+>
+  {side === "right" && <span>{text}</span>}
+  <Icon
+    name={icon}
+    alt={alt}
+    class="h-8 w-8 group-hover/link:scale-105 transition-transform duration-200"
+  />
+  {side === "left" && <span>{text}</span>}
+</a>

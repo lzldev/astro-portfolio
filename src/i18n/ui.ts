@@ -28,7 +28,7 @@ export const ui = createLanguagePack(
       "nav.home": "Inicio",
       "nav.cv": "Currículo",
       "nav.goBack": "voltar",
-      "nav.seeAlso": "ver em:",
+      "nav.seeAlso": "Disponivel em:",
       "download.cv": "Baixar como PDF",
     },
   },
@@ -53,6 +53,7 @@ export const generateStaticPaths = () => {
 
 export const useI18n = (url: URL) => {
   const lang = getLangFromUrl(url)
+
   const getRelativeUrl = (path: string) => getRelativeLocaleUrl(lang, path)
   const useI18Text = useTranslations(lang)
 
