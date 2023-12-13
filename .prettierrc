@@ -3,6 +3,7 @@
   "printWidth": 80,
   "useTabs": false,
   "semi": false,
+  "experimentalTernaries": true,
   "plugins": ["prettier-plugin-tailwindcss", "prettier-plugin-astro"],
   "overrides": [
     {
