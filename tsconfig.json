@@ -1,5 +1,6 @@
 {
   "extends": "astro/tsconfigs/strict",
+  "exclude": ["node_modules", "dist", "_astro", "./src/vanta", ".vercel"],
   "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "preact"
