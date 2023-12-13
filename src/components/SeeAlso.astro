@@ -28,9 +28,12 @@ const {
 })()
 ---
 
-<span class="absolute left-4 bottom-4 tracking-tighter">
+<span class="absolute left-8 bottom-8 tracking-tighter">
   {seeAlsoText}
-  <a class="font-semibold" href={getRelativeLocaleUrl(nextLang, "./")}>
+  <a
+    class="from-neutral-500 to-neutral-500 via-neutral-100 bg-clip-text text-transparent bg-gradient-to-bl"
+    href={getRelativeLocaleUrl(nextLang, "./")}
+  >
     {name}
   </a>
 </span>

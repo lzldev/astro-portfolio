@@ -29,13 +29,13 @@ const { lang } = useI18n(Astro.url)
     </main>
     <DarkModeSkeleton
       client:only="preact"
-      className="absolute min-h-[1vh] min-w-[1vw] left-4 top-4 z-50 flex h-7 w-7 items-center justify-center"
+      className="absolute min-h-[1vh] min-w-[1vw] left-4 top-4 z-50 flex h-7 w-7 items-center justify-center print:hidden"
       transition:name="darkMode"
       Dark
       Light
     >
-      <Icon slot="Dark" name="radix-icons:moon" />
-      <Icon slot="Light" name="radix-icons:sun" />
+      <Icon slot="Dark" name="radix-icons:moon" loading="eager"/>
+      <Icon slot="Light" name="radix-icons:sun" loading="eager"/>
     </DarkModeSkeleton>
   </body>
 </html>

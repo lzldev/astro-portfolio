@@ -20,11 +20,11 @@ const { Content } = await resume.render()
   <ThreeCanvas>
     <Wrapper>
       <div class="bg-background rounded-md bg-opacity-20 flex flex-col py-8">
-        <div class="flex justify-between pb-4 px-4 md:px-8">
+        <div class="flex justify-between pb-4 px-4 md:px-8 print:hidden">
           <a
             class="group/back flex items-center ring-opacity-40 ring-gray-200 bg-opacity-40 hover:bg-gray-200 hover:text-background transition-colors rounded-md p-2"
-            href={getRelativeUrl("../")}
-            astro-data-history="replace"
+            href={getRelativeUrl("/")}
+            astro-data-history="swap"
           >
             <Icon
               name="radix-icons:chevron-left"
