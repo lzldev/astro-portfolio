@@ -21,8 +21,8 @@ const {
 
 <a
   class:list={[
-    "group/link flex items-center ring-opacity-40 bg-opacity-40 hover:bg-gray-200 hover:text-background transition-colors rounded-md p-2 gap-x-2 selection:bg-transparent cursor-pointer",
-    !stealth && "ring-2 ring-gray-200",
+    "group/link flex items-center ring-opacity-40 bg-opacity-40 hover:bg-light-muted hover:dark:bg-dark hover:text-background dark:hover:text-dark-muted transition-colors rounded-md p-2 gap-x-2 selection:bg-transparent cursor-pointer",
+    !stealth && "ring-2 ring-light dark:ring-dark",
     props["class"],
   ]}
   {...props}
@@ -30,8 +30,10 @@ const {
   {side === "right" && <span class="flex-grow">{text}</span>}
   <Icon
     name={icon}
+    height="2em"
+    width="2em"
     alt="Right Icon"
-    class="w-4 h-5 group-hover/link:scale-110"
+    class="w-4 h-5 group-hover/link:text-background group-hover/link:dark:text-dark-muted group-hover/link:scale-110 text-light-highlight dark:text-dark-highlight"
     loading="eager"
   />
   {side === "left" && <span class="text-end">{text}</span>}

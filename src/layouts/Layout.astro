@@ -18,7 +18,7 @@ const { lang } = useI18n(Astro.url)
     <DefaultHeader {title} />
   </head>
   <body
-    class="bg-background selection:bg-highlight dark:bg-background-dark text-regular-text transition-colors selection:bg-highlightOff relative antialiased"
+    class="bg-background text-light dark:text-dark selection:bg-highlight dark:bg-background-dark transition-colors selection:bg-highlightOff relative antialiased"
   >
     <main
       transition:name="main"
@@ -34,8 +34,22 @@ const { lang } = useI18n(Astro.url)
       Dark
       Light
     >
-      <Icon slot="Dark" name="radix-icons:moon" loading="eager" />
-      <Icon slot="Light" name="radix-icons:sun" loading="eager" />
+      <Icon
+        slot="Dark"
+        class="text-dark-muted"
+        width="2em"
+        height="2em"
+        name="radix-icons:moon"
+        loading="eager"
+      />
+      <Icon
+        slot="Light"
+        class="text-light-highlight"
+        width="2em"
+        height="2em"
+        name="radix-icons:sun"
+        loading="eager"
+      />
     </DarkModeSkeleton>
   </body>
 </html>

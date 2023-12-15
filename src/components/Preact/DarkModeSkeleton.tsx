@@ -2,8 +2,6 @@ import type { ComponentProps, FunctionComponent } from "preact"
 
 import { useEffect, useState } from "preact/hooks"
 
-const root = document.documentElement
-
 export function DarkModeSkeleton({
   Dark,
   Light,
@@ -17,9 +15,9 @@ export function DarkModeSkeleton({
 
   useEffect(() => {
     if (theme === "dark") {
-      root.classList.add("dark")
+      document.documentElement.classList.add("dark")
     } else {
-      root.classList.remove("dark")
+      document.documentElement.classList.remove("dark")
     }
 
     localStorage.setItem("theme", theme)

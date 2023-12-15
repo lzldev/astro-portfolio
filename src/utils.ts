@@ -1,4 +1,4 @@
-import config from "../tailwind.config.mjs"
+import config from "../tailwind.config.ts"
 import resolveConfig from "tailwindcss/resolveConfig"
 
 function getTailwindConfig() {

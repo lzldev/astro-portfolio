@@ -1,6 +1,6 @@
-import type { APIRoute, GetStaticPaths } from "astro"
+import type { APIRoute } from "astro"
 
-import { ui, useI18n } from "../../i18n/ui"
+import { useI18n } from "../../i18n/ui"
 import { getEntry } from "astro:content"
 
 import { unified } from "unified"
@@ -8,15 +8,9 @@ import remarkPdf from "remark-pdf/node"
 import remarkParse from "remark-parse"
 import remarkMdx from "remark-mdx"
 
-export const prerender = true
+import { generateStaticPaths } from "../../i18n/ui"
 
-export const getStaticPaths = (() => {
-  return Object.keys(ui).map((lang) => ({
-    params: {
-      locale: lang,
-    },
-  }))
-}) satisfies GetStaticPaths
+export const getStaticPaths = generateStaticPaths
 
 const mdxToPDF = unified()
   .use(remarkParse)
