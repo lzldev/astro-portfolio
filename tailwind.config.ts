@@ -55,7 +55,7 @@ const config = {
         light: {
           DEFAULT: customColors.sandstone["800"],
           highlight: customColors.sandstone["900"],
-          muted: colors.neutral["600"],
+          muted: colors.neutral["500"],
         },
         dark: {
           DEFAULT: customColors.woodsmoke["200"],
