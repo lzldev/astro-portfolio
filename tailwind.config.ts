@@ -69,34 +69,6 @@ const config = {
             DEFAULT: customColors.woodsmoke["950"],
           },
         },
-        surface: {
-          DEFAULT: colors.neutral["600"],
-          dark: "#000000",
-        },
-        accent: {
-          DEFAULT: colors.neutral["500"],
-          dark: "#000000",
-        },
-        highlight: {
-          DEFAULT: colors.neutral["600"],
-          dark: "#000000",
-        },
-        "regular-text": {
-          DEFAULT: colors.neutral["300"],
-          dark: "#000000",
-        },
-        "text-muted": {
-          DEFAULT: colors.neutral["700"],
-          dark: "#000000",
-        },
-        "highlight-off": {
-          DEFAULT: colors.neutral["500"],
-          dark: "#000000",
-        },
-        "footer-link": {
-          DEFAULT: colors.neutral["400"],
-          dark: "#000000",
-        },
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
