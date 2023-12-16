@@ -10,8 +10,8 @@ const spaces = " ".repeat(2)
 const title = ((name ?? "NAME HERE") + spaces).repeat(50)
 ---
 
-<div class:list={["absolute overflow-clip max-w-full", className]}>
-  <span class="moving-text text-3xl w-max inline-block">
+<div class:list={["absolute max-w-full overflow-clip", className]}>
+  <span class="moving-text inline-block w-max text-3xl">
     {title}
   </span>
 </div>

@@ -16,7 +16,7 @@ export const getStaticPaths = generateStaticPaths
 <Layout title={t("nav.home")}>
   <ThreeCanvas>
     <Wrapper>
-      <div class="flex my-auto px-10 py-6 md:max-w-md md:px-4 flex-col">
+      <div class="my-auto flex flex-col px-10 py-6 md:max-w-md md:px-4">
         <!-- <BlinkingText
           text="NAME HERE HERE NAME"
           class:list={"text-2xl font-bold"}
@@ -31,7 +31,7 @@ export const getStaticPaths = generateStaticPaths
           >NAME HERE HERE NAME</span
         >
         <h1 class="text-light-muted dark:text-dark-muted">TS DEVELOPER</h1>
-        <div class="flex gap-x-2 py-4 justify-center md:justify-start">
+        <div class="flex justify-center gap-x-2 py-4 md:justify-start">
           <MiniButton
             icon="mdi:linkedin"
             text="Linkedin"
@@ -62,10 +62,10 @@ export const getStaticPaths = generateStaticPaths
         </div>
       </div>
       <SeeAlso />
-      <span class="absolute right-8 bottom-8">
+      <span class="absolute bottom-8 right-8">
         Source
         <a
-          class="font-semibold hover:underline tracking-tight"
+          class="font-semibold tracking-tight hover:underline"
           href="https://github.com/lzldev/astro-portfolio"
         >
           <span class="font-normal">@</span>lzldev

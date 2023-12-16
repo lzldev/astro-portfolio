@@ -18,18 +18,18 @@ const { lang } = useI18n(Astro.url)
     <DefaultHeader {title} />
   </head>
   <body
-    class="bg-background text-light dark:text-dark selection:bg-highlight dark:bg-background-dark transition-colors selection:bg-highlightOff relative antialiased"
+    class="selection:bg-highlightOff relative bg-background text-light antialiased transition-colors selection:bg-highlight dark:bg-background-dark dark:text-dark"
   >
     <main
       transition:name="main"
       transition:animate="slide"
-      class="flex flex-col min-h-screen w-full relative"
+      class="relative flex min-h-screen w-full flex-col"
     >
       <slot />
     </main>
     <DarkModeSkeleton
       client:only="preact"
-      className="absolute min-h-[1vh] min-w-[1vw] left-4 top-4 z-50 flex h-6 w-6 items-center justify-center print:hidden"
+      className="absolute left-4 top-4 z-50 flex h-6 min-h-[1vh] w-6 min-w-[1vw] items-center justify-center print:hidden"
       transition:name="darkMode"
       Dark
       Light
