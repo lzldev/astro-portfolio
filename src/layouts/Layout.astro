@@ -18,12 +18,20 @@ const { lang } = useI18n(Astro.url)
     <DefaultHeader {title} />
   </head>
   <body
-    class="relative bg-background text-light antialiased transition-colors selection:bg-light-muted dark:bg-background-dark dark:text-dark dark:selection:bg-dark-muted"
+    class="selection:bg-light-selection relative bg-background text-light antialiased transition-colors dark:bg-background-dark dark:text-dark print:p-0"
   >
+    <div
+      class="dark:bg-noise-new-dark bg-noise-new absolute inset-0 -z-50 h-full w-full"
+      style={{
+        "mask-image":
+          "radial-gradient(ellipse at 100% 0%, rgba(0,0,0,1) 0%,rgba(0,0,0,0) 25%, rgba(0,0,0,0) 80%, rgba(0,0,0,1) 100%)",
+      }}
+    >
+    </div>
     <main
       transition:name="main"
       transition:animate="slide"
-      class="relative flex min-h-screen w-full flex-col"
+      class="relative flex min-h-screen w-full flex-col print:m-0"
     >
       <slot />
     </main>

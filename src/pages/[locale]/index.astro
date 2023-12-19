@@ -16,48 +16,28 @@ export const getStaticPaths = generateStaticPaths
   <ThreeCanvas>
     <Wrapper>
       <div class="my-auto flex flex-col px-10 py-6 md:max-w-md md:px-4">
-        <!-- <BlinkingText
-          text="NAME HERE HERE NAME"
-          class:list={"text-2xl font-bold"}
-          odds={0.8}
-          classOn="text-neutral-400 dark:text-neutral-500"
-          classOff="text-background-text dark:text-background-text-dark"
-          interval={500}
-          client:load
-        /> -->
-
         <span
           class="bg-gradient-to-bl from-light-highlight to-light-muted bg-clip-text text-2xl font-bold text-transparent selection:text-light dark:from-dark-highlight dark:to-dark selection:dark:text-dark"
-          >NAME HERE HERE NAME</span
         >
-        <h1 class="text-light-muted dark:text-dark-muted">TS DEVELOPER</h1>
+          Lucas Costa
+        </span>
+        <h1 class="text-light-muted dark:text-dark-muted">
+          {t("about.subtitle")}
+        </h1>
         <div class="flex justify-center gap-x-2 py-4 md:justify-start">
           <MiniButton
-            icon="mdi:linkedin"
             text="Linkedin"
+            icon="mdi:linkedin"
             alt="Linkedin Icon"
             side="left"
-            href="./"
+            href="https://www.linkedin.com/in/lucas-costa-83b881275/"
           />
           <MiniButton
+            text="Github"
             icon="mdi:github"
             side="left"
-            text="Github"
             alt="Github Icon"
-            href="./"
-          />
-        </div>
-        <div class="flex gap-x-2">
-          <GhostButton
-            class="flex-grow md:max-w-[10rem]"
-            text={t("nav.cv")}
-            href={getRelativeUrl("/resume")}
-          />
-          <GhostButton
-            text={".pdf"}
-            icon="radix-icons:download"
-            side="left"
-            href={"./resume.pdf"}
+            href="https://github.com/lzldev"
           />
         </div>
       </div>
