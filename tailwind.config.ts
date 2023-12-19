@@ -41,6 +41,10 @@ const customColors = {
     "900": "hsl(265, 10%, 24%)",
     "950": "hsl(270, 10%, 8%)",
   },
+  coolPink: {
+    DEFAULT: "#fcb5c6",
+    dark: "#f14274",
+  },
 } as const
 
 const config = {
@@ -56,15 +60,17 @@ const config = {
           DEFAULT: customColors.sandstone["800"],
           highlight: customColors.sandstone["900"],
           muted: colors.neutral["500"],
+          selection: customColors.coolPink.dark,
         },
         dark: {
           DEFAULT: customColors.woodsmoke["200"],
           highlight: customColors.woodsmoke["100"],
           muted: customColors.woodsmoke["500"],
+          selection: customColors.coolPink.dark,
         },
         // ---
         background: {
-          DEFAULT: customColors.sandstone["200"],
+          DEFAULT: customColors.zorba["400"],
           dark: {
             DEFAULT: customColors.woodsmoke["950"],
           },
@@ -75,6 +81,8 @@ const config = {
         blobby_noise: "url('/blobby_noise.svg')",
         dark_noise: "url('/dark_noise.svg')",
         noise: "url('/noise.svg')",
+        "noise-new": "url('/noise-new.svg')",
+        "noise-new-dark": "url('/noise-new-dark.svg')",
       },
     },
   },
