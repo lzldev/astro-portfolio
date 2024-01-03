@@ -13,15 +13,15 @@ const { lang } = useI18n(Astro.url)
 ---
 
 <!doctype html>
-<html lang={lang} transition:persist>
+<html lang={lang} class="dark" transition:persist>
   <head>
     <DefaultHeader {title} />
   </head>
   <body
-    class="selection:bg-light-selection relative bg-background text-light antialiased transition-colors dark:bg-background-dark dark:text-dark print:p-0"
+    class="relative bg-background text-light antialiased transition-colors selection:bg-light-selection dark:bg-background-dark dark:text-dark print:p-0"
   >
     <div
-      class="dark:bg-noise-new-dark bg-noise-new absolute inset-0 -z-50 h-full w-full"
+      class="absolute inset-0 -z-50 h-full w-full bg-noise-new dark:bg-noise-new-dark"
       style={{
         "mask-image":
           "radial-gradient(ellipse at 100% 0%, rgba(0,0,0,1) 0%,rgba(0,0,0,0) 25%, rgba(0,0,0,0) 80%, rgba(0,0,0,1) 100%)",
@@ -35,7 +35,7 @@ const { lang } = useI18n(Astro.url)
     >
       <slot />
     </main>
-    <DarkModeSkeleton
+    <!-- <DarkModeSkeleton
       client:only="preact"
       className="absolute left-4 top-4 z-50 flex h-6 min-h-[1vh] w-6 min-w-[1vw] cursor-pointer items-center justify-center transition-transform hover:scale-105 print:hidden"
       transition:name="darkMode"
@@ -58,6 +58,6 @@ const { lang } = useI18n(Astro.url)
         name="radix-icons:sun"
         loading="eager"
       />
-    </DarkModeSkeleton>
+    </DarkModeSkeleton> -->
   </body>
 </html>

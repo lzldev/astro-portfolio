@@ -20,10 +20,7 @@ const {
 ---
 
 <a
-  class:list={[
-    "group/link flex items-center gap-x-2 underline-offset-1 hover:underline",
-    props["class"],
-  ]}
+  class:list={["group/link flex items-center gap-x-2", props["class"]]}
   {...props}
 >
   {side === "right" && <span>{text}</span>}
@@ -32,7 +29,14 @@ const {
     height="2em"
     width="2em"
     alt={alt}
-    class="h-8 w-8 text-light-muted transition-transform duration-200 group-hover/link:scale-105 dark:text-dark"
+    class="h-8 w-8 text-light-muted transition-transform duration-200 dark:text-dark"
   />
-  {side === "left" && <span>{text}</span>}
+  {
+    side === "left" && (
+      <span class="relative">
+        <div class="absolute inset-auto bottom-0.5 h-[1px] w-full scale-x-0 bg-light-muted transition-transform duration-500 ease-out group-hover/link:scale-x-100 dark:text-dark" />
+        {text}
+      </span>
+    )
+  }
 </a>
