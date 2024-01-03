@@ -5,14 +5,15 @@ import Layout from "../../layouts/Layout.astro"
 import Wrapper from "../../components/Wrapper.astro"
 import SeeAlso from "../../components/SeeAlso.astro"
 import MiniButton from "../../components/MiniButton.astro"
-import GhostButton from "../../components/GhostButton.astro"
+import { Grain } from "../../components/Preact/grain"
 
-const { getRelativeUrl, useI18Text: t } = useI18n(Astro.url)
+const { useI18Text: t } = useI18n(Astro.url)
 
 export const getStaticPaths = generateStaticPaths
 ---
 
 <Layout title={t("nav.home")}>
+  <Grain client:load={true} />
   <ThreeCanvas>
     <Wrapper>
       <div class="my-auto flex flex-col px-10 py-6 md:max-w-md md:px-4">
