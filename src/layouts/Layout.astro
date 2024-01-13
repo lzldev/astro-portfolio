@@ -1,8 +1,6 @@
 ---
 import DefaultHeader from "../components/DefaultHeader.astro"
-import { DarkModeSkeleton } from "../components/Preact/DarkModeSkeleton"
 import { useI18n } from "../i18n/ui"
-import { Icon } from "astro-icon"
 
 interface Props {
   title: string
@@ -20,14 +18,6 @@ const { lang } = useI18n(Astro.url)
   <body
     class="relative bg-background text-light antialiased transition-colors selection:bg-light-selection dark:bg-background-dark dark:text-dark print:p-0"
   >
-    <div
-      class="absolute inset-0 -z-50 h-full w-full bg-noise-new dark:bg-noise-new-dark"
-      style={{
-        "mask-image":
-          "radial-gradient(ellipse at 100% 0%, rgba(0,0,0,1) 0%,rgba(0,0,0,0) 25%, rgba(0,0,0,0) 80%, rgba(0,0,0,1) 100%)",
-      }}
-    >
-    </div>
     <main
       transition:name="main"
       transition:animate="slide"
