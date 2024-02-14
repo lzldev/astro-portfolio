@@ -1,57 +1,57 @@
 ---
-import ThreeCanvas from "../../components/ThreeCanvas.astro"
+import { getEntry } from "astro:content"
+
 import { generateStaticPaths, useI18n } from "../../i18n/ui"
 import Layout from "../../layouts/Layout.astro"
-import Wrapper from "../../components/Wrapper.astro"
-import SeeAlso from "../../components/SeeAlso.astro"
-import MiniButton from "../../components/MiniButton.astro"
+import Main from "../../components/Main.astro"
+import Footer from "../../components/Footer.astro"
+import Header from "../../components/Header.astro"
+import MiniLocaleSwitch from "../../components/MiniLocaleSwitch.astro"
+import Source from "../../components/SourceLink.astro"
+import Link from "../../components/Link.astro"
 import { Grain } from "../../components/Preact/grain"
 
-const { useI18Text: t } = useI18n(Astro.url)
-
 export const getStaticPaths = generateStaticPaths
+
+const { useI18Text: t, lang } = useI18n(Astro.url)
+const presentation = await getEntry("presentation", `${lang}/presentation`)
+const { Content } = await presentation.render()
 ---
 
 <Layout title={t("nav.home")}>
   <Grain client:load={true} />
-  <ThreeCanvas>
-    <Wrapper>
-      <div class="my-auto flex flex-col px-10 py-6 md:max-w-md md:px-4">
+  <MiniLocaleSwitch />
+  <Main>
+    <div
+      class="flex w-full flex-col rounded-3xl border-2 border-neutral-800 px-10 py-6"
+    >
+      <div class="flex justify-between align-baseline">
         <span
-          class="bg-gradient-to-bl from-light-highlight to-light-muted bg-clip-text text-2xl font-bold text-transparent selection:text-light dark:from-dark-highlight dark:to-dark selection:dark:text-dark"
+          class="bg-gradient-to-bl from-light-highlight to-light-muted bg-clip-text text-3xl font-bold tracking-tight text-transparent antialiased selection:text-light dark:from-dark-highlight dark:to-dark selection:dark:text-dark"
         >
           Lucas Costa
         </span>
-        <h1 class="text-light-muted dark:text-dark-muted">
-          {t("about.subtitle")}
-        </h1>
-        <div class="flex justify-center gap-x-2 py-4 md:justify-start">
-          <MiniButton
-            text="Linkedin"
-            icon="mdi:linkedin"
-            alt="Linkedin Icon"
-            side="left"
-            href="https://www.linkedin.com/in/lucas-costa-83b881275/"
-          />
-          <MiniButton
+        <div class="flex justify-center gap-x-2 md:justify-start">
+          <Link
             text="Github"
             icon="mdi:github"
             side="left"
             alt="Github Icon"
             href="https://github.com/lzldev"
           />
+          <Link
+            text="Linkedin"
+            icon="mdi:linkedin"
+            alt="Linkedin Icon"
+            side="left"
+            href="https://www.linkedin.com/in/lucas-costa-83b881275/"
+          />
         </div>
       </div>
-      <SeeAlso />
-      <span class="absolute bottom-8 right-8">
-        Source
-        <a
-          class="font-semibold tracking-tight hover:underline"
-          href="https://github.com/lzldev/astro-portfolio"
-        >
-          <span class="font-normal">@</span>lzldev
-        </a>
-      </span>
-    </Wrapper>
-  </ThreeCanvas>
+      <Content />
+    </div>
+  </Main>
+  <Footer>
+    <Source />
+  </Footer>
 </Layout>

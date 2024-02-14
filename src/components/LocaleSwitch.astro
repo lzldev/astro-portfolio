@@ -1,0 +1,41 @@
+---
+import {
+  SupportedLanguages,
+  SupportedLanguagesNames,
+  useI18n,
+} from "../i18n/ui"
+
+import { getRelativeLocaleUrl } from "astro:i18n"
+import { useTranslations } from "../i18n/utils"
+
+const { lang } = useI18n(Astro.url)
+
+const {
+  lang: nextLang,
+  name,
+  text,
+} = (() => {
+  const id = SupportedLanguages.indexOf(lang)
+  const len = SupportedLanguages.length
+  const next = SupportedLanguages.at((id + 1) % len)!
+  const seeAlsoText = useTranslations(next)("nav.seeAlso")
+
+  return {
+    name: SupportedLanguagesNames[next],
+    lang: next,
+    text: seeAlsoText,
+  }
+})()
+---
+
+<a
+  class="group/link tracking-tighter"
+  href={getRelativeLocaleUrl(nextLang, "./")}
+>
+  {text}
+  <span
+    class="bg-gradient-to-bl from-light-highlight to-light bg-clip-text font-semibold tracking-normal text-transparent transition-all dark:from-dark-highlight dark:to-dark-muted"
+  >
+    {name}
+  </span>
+</a>

@@ -1,10 +1,13 @@
 {
   "extends": "astro/tsconfigs/strict",
-  "exclude": ["node_modules", "dist", "_astro", "./src/vanta", ".vercel"],
+  "exclude": ["node_modules", "dist", "_astro", ".vercel"],
   "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "preact",
     "allowJs": true,
-    "checkJs": true
+    "checkJs": true,
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   }
 }

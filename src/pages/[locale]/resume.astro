@@ -1,5 +1,4 @@
 ---
-import ThreeCanvas from "../../components/ThreeCanvas.astro"
 import { generateStaticPaths, useI18n } from "../../i18n/ui"
 import Layout from "../../layouts/Layout.astro"
 import Wrapper from "../../components/Wrapper.astro"
@@ -17,34 +16,32 @@ const { Content } = await resume.render()
 ---
 
 <Layout title={t("nav.cv")}>
-  <ThreeCanvas>
-    <Wrapper class:list={["px-0 pt-14"]} id="tbprint">
-      <div
-        class="flex flex-col rounded-md px-4 py-6 backdrop-blur-xl sm:py-7 md:px-8"
-      >
-        <div class="flex justify-between pb-4 print:hidden">
-          <GhostButton
-            stealth
-            text={t("nav.goBack")}
-            side="left"
-            icon="radix-icons:chevron-left"
-            href={getRelativeUrl("/")}
-            astro-data-history="swap"
-          />
-          <GhostButton
-            text={t("download.cv")}
-            side="left"
-            icon="radix-icons:download"
-            href={getRelativeUrl("/")}
-            astro-data-history="swap"
-          />
-        </div>
-        <div class="items-stretch justify-center md:p-2">
-          <Prose>
-            <Content />
-          </Prose>
-        </div>
+  <Wrapper class:list={["px-0 pt-14"]} id="tbprint">
+    <div
+      class="flex flex-col rounded-md px-4 py-6 backdrop-blur-xl sm:py-7 md:px-8"
+    >
+      <div class="flex justify-between pb-4 print:hidden">
+        <GhostButton
+          stealth
+          text={t("nav.goBack")}
+          side="left"
+          icon="radix-icons:chevron-left"
+          href={getRelativeUrl("/")}
+          astro-data-history="swap"
+        />
+        <GhostButton
+          text={t("download.cv")}
+          side="left"
+          icon="radix-icons:download"
+          href={getRelativeUrl("/")}
+          astro-data-history="swap"
+        />
       </div>
-    </Wrapper>
-  </ThreeCanvas>
+      <div class="items-stretch justify-center md:p-2">
+        <Prose>
+          <Content />
+        </Prose>
+      </div>
+    </div>
+  </Wrapper>
 </Layout>

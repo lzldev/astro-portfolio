@@ -11,43 +11,15 @@ const { lang } = useI18n(Astro.url)
 ---
 
 <!doctype html>
-<html lang={lang} class="dark" transition:persist>
+<html lang={lang} transition:persist>
   <head>
     <DefaultHeader {title} />
   </head>
   <body
-    class="relative bg-background text-light antialiased transition-colors selection:bg-light-selection dark:bg-background-dark dark:text-dark print:p-0"
+    class="relative flex min-h-screen w-full flex-col bg-background text-light antialiased transition-colors selection:bg-light-selection dark:bg-background-dark dark:text-dark"
+    transition:name="main"
+    transition:animate="slide"
   >
-    <main
-      transition:name="main"
-      transition:animate="slide"
-      class="relative flex min-h-screen w-full flex-col print:m-0"
-    >
-      <slot />
-    </main>
-    <!-- <DarkModeSkeleton
-      client:only="preact"
-      className="absolute left-4 top-4 z-50 flex h-6 min-h-[1vh] w-6 min-w-[1vw] cursor-pointer items-center justify-center transition-transform hover:scale-105 print:hidden"
-      transition:name="darkMode"
-      Dark
-      Light
-    >
-      <Icon
-        slot="Dark"
-        class="text-woodsmoke-400 transition-colors hover:text-woodsmoke-200"
-        width="2em"
-        height="2em"
-        name="radix-icons:moon"
-        loading="eager"
-      />
-      <Icon
-        slot="Light"
-        class="text-light-muted transition-colors hover:text-light-highlight"
-        width="2em"
-        height="2em"
-        name="radix-icons:sun"
-        loading="eager"
-      />
-    </DarkModeSkeleton> -->
+    <slot />
   </body>
 </html>

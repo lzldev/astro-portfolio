@@ -7,13 +7,14 @@ import {
 
 import { getRelativeLocaleUrl } from "astro:i18n"
 import { useTranslations } from "../i18n/utils"
+import { Icon } from "astro-icon"
 
 const { lang } = useI18n(Astro.url)
 
 const {
   lang: nextLang,
   name,
-  seeAlsoText,
+  text,
 } = (() => {
   const id = SupportedLanguages.indexOf(lang)
   const len = SupportedLanguages.length
@@ -23,19 +24,20 @@ const {
   return {
     name: SupportedLanguagesNames[next],
     lang: next,
-    seeAlsoText: seeAlsoText,
+    text: seeAlsoText,
   }
 })()
 ---
 
-<a
-  class="group/link absolute bottom-8 left-8 tracking-tighter"
+<div
+  class="group/link fixed bottom-4 right-4 max-h-fit max-w-fit tracking-tighter md:left-4 md:top-4"
   href={getRelativeLocaleUrl(nextLang, "./")}
 >
-  {seeAlsoText}
-  <span
-    class="bg-gradient-to-bl from-light-highlight to-light bg-clip-text font-semibold tracking-normal text-transparent transition-all dark:from-dark-highlight dark:to-dark-muted"
-  >
-    {name}
-  </span>
-</a>
+  <Icon
+    name="icon-name"
+    height="2em"
+    width="2em"
+    alt="Globe Icon"
+    class="h-8 w-8 text-light-muted transition-transform duration-200 dark:text-dark"
+  />
+</div>

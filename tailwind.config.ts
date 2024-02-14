@@ -1,4 +1,5 @@
 import colors from "tailwindcss/colors"
+
 import type { Config } from "tailwindcss"
 
 const customColors = {
@@ -55,7 +56,7 @@ const config = {
     extend: {
       colors: {
         ...customColors,
-        // Text ---
+        // Typeography
         light: {
           DEFAULT: customColors.sandstone["800"],
           highlight: customColors.sandstone["900"],
@@ -70,7 +71,9 @@ const config = {
         },
         // ---
         background: {
-          DEFAULT: customColors.zorba["400"],
+          light: {
+            DEFAULT: customColors.zorba["400"],
+          },
           dark: {
             DEFAULT: customColors.woodsmoke["950"],
           },

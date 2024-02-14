@@ -9,6 +9,9 @@ import mdx from "@astrojs/mdx"
 export default defineConfig({
   output: "static",
   adapter: vercel(),
+  devToolbar: {
+    enabled: false,
+  },
   integrations: [
     preact({
       compat: true,
