@@ -1,7 +1,7 @@
 ---
 import { getEntry } from "astro:content"
 
-import { generateStaticPaths, useI18n } from "../../i18n/ui"
+import { generateI18nStaticPaths, useI18n } from "../../i18n/ui"
 import Layout from "../../layouts/Layout.astro"
 import Main from "../../components/Main.astro"
 import Footer from "../../components/Footer.astro"
@@ -11,7 +11,7 @@ import Source from "../../components/SourceLink.astro"
 import Link from "../../components/Link.astro"
 import { Grain } from "../../components/Preact/grain"
 
-export const getStaticPaths = generateStaticPaths
+export const getStaticPaths = generateI18nStaticPaths
 
 const { useI18Text: t, lang } = useI18n(Astro.url)
 const presentation = await getEntry("presentation", `${lang}/presentation`)

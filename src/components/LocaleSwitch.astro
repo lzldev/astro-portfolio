@@ -1,9 +1,5 @@
 ---
-import {
-  SupportedLanguages,
-  SupportedLanguagesNames,
-  useI18n,
-} from "../i18n/ui"
+import { Languages, LanguageNames, useI18n } from "../i18n/ui"
 
 import { getRelativeLocaleUrl } from "astro:i18n"
 import { useTranslations } from "../i18n/utils"
@@ -15,13 +11,13 @@ const {
   name,
   text,
 } = (() => {
-  const id = SupportedLanguages.indexOf(lang)
-  const len = SupportedLanguages.length
-  const next = SupportedLanguages.at((id + 1) % len)!
+  const id = Languages.indexOf(lang)
+  const len = Languages.length
+  const next = Languages.at((id + 1) % len)!
   const seeAlsoText = useTranslations(next)("nav.seeAlso")
 
   return {
-    name: SupportedLanguagesNames[next],
+    name: LanguageNames[next],
     lang: next,
     text: seeAlsoText,
   }

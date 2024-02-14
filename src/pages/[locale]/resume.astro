@@ -1,12 +1,12 @@
 ---
-import { generateStaticPaths, useI18n } from "../../i18n/ui"
+import { generateI18nStaticPaths, useI18n } from "../../i18n/ui"
 import Layout from "../../layouts/Layout.astro"
 import Wrapper from "../../components/Wrapper.astro"
 import { getEntry } from "astro:content"
 import Prose from "../../components/Prose.astro"
 import GhostButton from "../../components/GhostButton.astro"
 
-export const getStaticPaths = generateStaticPaths
+export const getStaticPaths = generateI18nStaticPaths
 
 const { getRelativeUrl, useI18Text: t, lang } = useI18n(Astro.url)
 

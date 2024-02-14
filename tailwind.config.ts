@@ -71,11 +71,11 @@ const config = {
         },
         // ---
         background: {
-          light: {
-            DEFAULT: customColors.zorba["400"],
-          },
+          DEFAULT: customColors.zorba["400"],
+          surface: customColors.zorba["500"],
           dark: {
             DEFAULT: customColors.woodsmoke["950"],
+            surface: customColors.woodsmoke["800"],
           },
         },
       },

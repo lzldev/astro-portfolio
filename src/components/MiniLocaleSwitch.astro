@@ -1,43 +1,40 @@
 ---
-import {
-  SupportedLanguages,
-  SupportedLanguagesNames,
-  useI18n,
-} from "../i18n/ui"
+import { useI18n, getNextLanguage } from "../i18n/ui"
 
 import { getRelativeLocaleUrl } from "astro:i18n"
-import { useTranslations } from "../i18n/utils"
 import { Icon } from "astro-icon"
 
-const { lang } = useI18n(Astro.url)
-
-const {
-  lang: nextLang,
-  name,
-  text,
-} = (() => {
-  const id = SupportedLanguages.indexOf(lang)
-  const len = SupportedLanguages.length
-  const next = SupportedLanguages.at((id + 1) % len)!
-  const seeAlsoText = useTranslations(next)("nav.seeAlso")
-
-  return {
-    name: SupportedLanguagesNames[next],
-    lang: next,
-    text: seeAlsoText,
-  }
-})()
+const { lang, name } = useI18n(Astro.url)
+const nextLang = getNextLanguage(lang)
 ---
 
 <div
-  class="group/link fixed bottom-4 right-4 max-h-fit max-w-fit tracking-tighter md:left-4 md:top-4"
-  href={getRelativeLocaleUrl(nextLang, "./")}
+  class="group/link absolute left-4 top-4 isolate max-h-fit max-w-fit tracking-tighter"
 >
-  <Icon
-    name="icon-name"
-    height="2em"
-    width="2em"
-    alt="Globe Icon"
-    class="h-8 w-8 text-light-muted transition-transform duration-200 dark:text-dark"
-  />
+  <div class="relative flex flex-col">
+    <a href={getRelativeLocaleUrl(nextLang.lang, "./")}
+      ><Icon
+        name="mdi:earth"
+        height="2em"
+        width="2em"
+        alt="Globe Icon"
+        class="h-8 w-8 text-light-muted transition-transform duration-200 dark:text-dark"
+      /></a
+    >
+    <div
+      class="absolute top-full hidden min-w-fit select-none flex-col group-hover/link:flex"
+    >
+      <div class="px-2">
+        <div
+          class="border-transparent-500 border-y-background-surface dark:border-y-background-dark-surface pointer-events-none h-[0px] min-h-[10px] w-[0px] border-x-4 border-b-[8px] border-x-transparent"
+        >
+        </div>
+      </div>
+      <div
+        class="bg-background-surface w-[350px] max-w-fit rounded-md p-1 px-2 dark:bg-background-dark"
+      >
+        Change Language To {name}
+      </div>
+    </div>
+  </div>
 </div>
