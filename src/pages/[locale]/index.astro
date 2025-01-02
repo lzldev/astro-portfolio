@@ -2,7 +2,7 @@
 import MiniButton from "../../components/MiniButton.astro"
 import SeeAlso from "../../components/SeeAlso.astro"
 import ThreeCanvas from "../../components/ThreeCanvas.astro"
-import Wrapper from "../../components/Wrapper.astro"
+import FullscreenContainer from "../../components/FullscreenContainer.astro"
 import { generateStaticPaths, useI18n } from "../../i18n/ui"
 import Layout from "../../layouts/Layout.astro"
 
@@ -13,7 +13,7 @@ export const getStaticPaths = generateStaticPaths
 
 <Layout title={t("nav.home")}>
   <ThreeCanvas>
-    <Wrapper>
+    <FullscreenContainer>
       <div class="my-auto flex flex-col px-10 py-6 md:max-w-md md:px-4">
         <span
           class="bg-gradient-to-bl from-light-highlight to-light-muted bg-clip-text text-2xl font-bold text-transparent selection:text-light dark:from-dark-highlight dark:to-dark selection:dark:text-dark"
@@ -50,6 +50,6 @@ export const getStaticPaths = generateStaticPaths
           <span class="font-normal">@</span>lzldev
         </a>
       </span>
-    </Wrapper>
+    </FullscreenContainer>
   </ThreeCanvas>
 </Layout>
