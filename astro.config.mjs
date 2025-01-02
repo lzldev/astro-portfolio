@@ -8,7 +8,7 @@ import mdx from "@astrojs/mdx"
 // https://astro.build/config
 export default defineConfig({
   output: "static",
-  adapter: vercel(),
+  adapter: vercel({}),
   integrations: [
     preact({
       compat: true,

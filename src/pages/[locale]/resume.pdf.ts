@@ -26,6 +26,8 @@ export const GET: APIRoute = async ({ url }) => {
 
   const entry = await getEntry("resume", `${lang}/resume`)
 
+  if (!entry) return new Response(null, { status: 404 })
+
   const comp = await mdxToPDF.process(entry.body)
   const result = (await comp.result) as Buffer
 
