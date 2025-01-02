@@ -1,0 +1,49 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n"
+import FullscreenContainer from "../../components/FullscreenContainer.astro"
+import SeeAlso from "../../components/SeeAlso.astro"
+import ThreeCanvas from "../../components/ThreeCanvas.astro"
+import { generateStaticPaths, useI18n } from "../../i18n/ui"
+import Layout from "../../layouts/Layout.astro"
+
+const { lang } = useI18n(Astro.url)
+
+const { useI18Text: t } = useI18n(Astro.url)
+
+export const prerender = false
+export const getStaticPaths = generateStaticPaths
+
+const rng = Math.round(Math.random() * 10000)
+---
+
+<Layout title={t("nav.home")}>
+  <ThreeCanvas>
+    <FullscreenContainer>
+      <div class="my-auto flex flex-col px-10 py-6 md:max-w-md md:px-4">
+        <span
+          class="bg-gradient-to-bl from-light-highlight to-light-muted bg-clip-text text-2xl font-bold text-transparent selection:text-light dark:from-dark-highlight dark:to-dark selection:dark:text-dark"
+        >
+          {t("lucky.yournumber")}
+        </span>
+        <a
+          href={getRelativeLocaleUrl(lang, "/lucky")}
+          data-astro-history="replace"
+        >
+          <h3 class="text-light-muted dark:text-dark-muted" data-rng>
+            {rng}
+          </h3>
+        </a>
+      </div>
+      <SeeAlso />
+      <span class="absolute bottom-8 right-8">
+        Source
+        <a
+          class="font-semibold tracking-tight hover:underline"
+          href="https://github.com/lzldev/astro-portfolio"
+        >
+          <span class="font-normal">@</span>lzldev
+        </a>
+      </span>
+    </FullscreenContainer>
+  </ThreeCanvas>
+</Layout>
