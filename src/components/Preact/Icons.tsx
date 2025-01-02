@@ -1,5 +1,4 @@
-import type { ComponentProps } from "preact"
-import type { VNode } from "preact"
+import type { ComponentProps, VNode } from "preact"
 
 const icons = {
   // material-symbols:dark-mode-rounded

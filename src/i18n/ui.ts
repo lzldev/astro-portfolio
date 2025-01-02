@@ -1,5 +1,5 @@
-import { getLangFromUrl, useTranslations } from "./utils"
 import { getRelativeLocaleUrl } from "astro:i18n"
+import { getLangFromUrl, useTranslations } from "./utils"
 
 export const SupportedLanguagesNames = {
   "pt-br": "Português",

@@ -1,12 +1,12 @@
 import type { APIRoute } from "astro"
 
-import { useI18n } from "../../i18n/ui"
 import { getEntry } from "astro:content"
+import { useI18n } from "../../i18n/ui"
 
-import { unified } from "unified"
-import remarkPdf from "remark-pdf/node"
-import remarkParse from "remark-parse"
 import remarkMdx from "remark-mdx"
+import remarkParse from "remark-parse"
+import remarkPdf from "remark-pdf/node"
+import { unified } from "unified"
 
 import { generateStaticPaths } from "../../i18n/ui"
 

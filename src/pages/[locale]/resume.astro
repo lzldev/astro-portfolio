@@ -1,11 +1,11 @@
 ---
+import { getEntry } from "astro:content"
+import GhostButton from "../../components/GhostButton.astro"
+import Prose from "../../components/Prose.astro"
 import ThreeCanvas from "../../components/ThreeCanvas.astro"
+import Wrapper from "../../components/Wrapper.astro"
 import { generateStaticPaths, useI18n } from "../../i18n/ui"
 import Layout from "../../layouts/Layout.astro"
-import Wrapper from "../../components/Wrapper.astro"
-import { getEntry } from "astro:content"
-import Prose from "../../components/Prose.astro"
-import GhostButton from "../../components/GhostButton.astro"
 
 export const getStaticPaths = generateStaticPaths
 

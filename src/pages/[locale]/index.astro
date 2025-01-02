@@ -1,11 +1,10 @@
 ---
+import MiniButton from "../../components/MiniButton.astro"
+import SeeAlso from "../../components/SeeAlso.astro"
 import ThreeCanvas from "../../components/ThreeCanvas.astro"
+import Wrapper from "../../components/Wrapper.astro"
 import { generateStaticPaths, useI18n } from "../../i18n/ui"
 import Layout from "../../layouts/Layout.astro"
-import Wrapper from "../../components/Wrapper.astro"
-import SeeAlso from "../../components/SeeAlso.astro"
-import MiniButton from "../../components/MiniButton.astro"
-import { Grain } from "../../components/Preact/grain"
 
 const { useI18Text: t } = useI18n(Astro.url)
 
