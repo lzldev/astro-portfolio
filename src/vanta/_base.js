@@ -1,13 +1,14 @@
+// @ts-nocheck
 import { WebGLRenderer, Scene } from "three"
 import { mobileCheck, q, color2Hex, clearThree } from "./helpers.js"
 // const DEBUGMODE = window.location.toString().indexOf('VANTADEBUG') !== -1
 
-// const win = typeof window == "object";
-// let THREE = (win && window.THREE) || {};
+const win = typeof window == "object"
+let THREE = (win && window.THREE) || {}
 
-// if (win && !window.VANTA) window.VANTA = {};
+if (win && !window.VANTA) window.VANTA = {}
 
-// const VANTA = (win && window.VANTA) || {};
+export const VANTA = (win && window.VANTA) || {}
 
 // VANTA.register = (name, Effect) => {
 //   return (VANTA[name] = (opts) => new Effect(opts));

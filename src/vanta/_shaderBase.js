@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { VantaBase } from "./_base.js"
 import {
   Camera,
