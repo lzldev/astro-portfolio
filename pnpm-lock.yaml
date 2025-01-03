@@ -13,16 +13,16 @@ importers:
         version: 0.9.4(prettier-plugin-astro@0.12.2)(prettier@3.1.0)(typescript@5.3.3)
       '@astrojs/mdx':
         specifier: ^4.0.3
-        version: 4.0.3(astro@5.1.2(@types/node@20.10.4)(jiti@1.21.0)(rollup@4.29.1)(terser@5.26.0)(typescript@5.3.3)(yaml@2.7.0))
+        version: 4.0.3(astro@5.1.2(@types/node@20.10.4)(@upstash/redis@1.34.3)(jiti@1.21.0)(rollup@4.29.1)(terser@5.26.0)(typescript@5.3.3)(yaml@2.7.0))
       '@astrojs/preact':
         specifier: ^4.0.1
         version: 4.0.1(@babel/core@7.23.5)(@types/node@20.10.4)(jiti@1.21.0)(preact@10.19.2)(terser@5.26.0)(yaml@2.7.0)
       '@astrojs/tailwind':
         specifier: ^5.1.4
-        version: 5.1.4(astro@5.1.2(@types/node@20.10.4)(jiti@1.21.0)(rollup@4.29.1)(terser@5.26.0)(typescript@5.3.3)(yaml@2.7.0))(tailwindcss@3.3.6)
+        version: 5.1.4(astro@5.1.2(@types/node@20.10.4)(@upstash/redis@1.34.3)(jiti@1.21.0)(rollup@4.29.1)(terser@5.26.0)(typescript@5.3.3)(yaml@2.7.0))(tailwindcss@3.3.6)
       '@astrojs/vercel':
         specifier: ^8.0.1
-        version: 8.0.1(astro@5.1.2(@types/node@20.10.4)(jiti@1.21.0)(rollup@4.29.1)(terser@5.26.0)(typescript@5.3.3)(yaml@2.7.0))(rollup@4.29.1)
+        version: 8.0.1(astro@5.1.2(@types/node@20.10.4)(@upstash/redis@1.34.3)(jiti@1.21.0)(rollup@4.29.1)(terser@5.26.0)(typescript@5.3.3)(yaml@2.7.0))(rollup@4.29.1)
       '@mdx-js/mdx':
         specifier: ^3.0.0
         version: 3.0.0
@@ -32,9 +32,12 @@ importers:
       '@tailwindcss/typography':
         specifier: ^0.5.10
         version: 0.5.10(tailwindcss@3.3.6)
+      '@upstash/redis':
+        specifier: ^1.34.3
+        version: 1.34.3
       astro:
         specifier: ^5.1.2
-        version: 5.1.2(@types/node@20.10.4)(jiti@1.21.0)(rollup@4.29.1)(terser@5.26.0)(typescript@5.3.3)(yaml@2.7.0)
+        version: 5.1.2(@types/node@20.10.4)(@upstash/redis@1.34.3)(jiti@1.21.0)(rollup@4.29.1)(terser@5.26.0)(typescript@5.3.3)(yaml@2.7.0)
       astro-icon:
         specifier: ^0.8.2
         version: 0.8.2
@@ -81,6 +84,9 @@ importers:
       terser:
         specifier: ^5.25.0
         version: 5.26.0
+      vite:
+        specifier: ^6.0.7
+        version: 6.0.7(@types/node@20.10.4)(jiti@1.21.0)(terser@5.26.0)(yaml@2.7.0)
 
 packages:
 
@@ -1163,6 +1169,9 @@ packages:
 
   '@ungap/structured-clone@1.2.0':
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
+
+  '@upstash/redis@1.34.3':
+    resolution: {integrity: sha512-VT25TyODGy/8ljl7GADnJoMmtmJ1F8d84UXfGonRRF8fWYJz7+2J6GzW+a6ETGtk4OyuRTt7FRSvFG5GvrfSdQ==}
 
   '@vercel/analytics@1.4.1':
     resolution: {integrity: sha512-ekpL4ReX2TH3LnrRZTUKjHHNpNy9S1I7QmS+g/RQXoSUQ8ienzosuX7T9djZ/s8zPhBx1mpHP/Rw5875N+zQIQ==}
@@ -3791,12 +3800,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/mdx@4.0.3(astro@5.1.2(@types/node@20.10.4)(jiti@1.21.0)(rollup@4.29.1)(terser@5.26.0)(typescript@5.3.3)(yaml@2.7.0))':
+  '@astrojs/mdx@4.0.3(astro@5.1.2(@types/node@20.10.4)(@upstash/redis@1.34.3)(jiti@1.21.0)(rollup@4.29.1)(terser@5.26.0)(typescript@5.3.3)(yaml@2.7.0))':
     dependencies:
       '@astrojs/markdown-remark': 6.0.1
       '@mdx-js/mdx': 3.1.0(acorn@8.14.0)
       acorn: 8.14.0
-      astro: 5.1.2(@types/node@20.10.4)(jiti@1.21.0)(rollup@4.29.1)(terser@5.26.0)(typescript@5.3.3)(yaml@2.7.0)
+      astro: 5.1.2(@types/node@20.10.4)(@upstash/redis@1.34.3)(jiti@1.21.0)(rollup@4.29.1)(terser@5.26.0)(typescript@5.3.3)(yaml@2.7.0)
       es-module-lexer: 1.6.0
       estree-util-visit: 2.0.0
       hast-util-to-html: 9.0.4
@@ -3839,9 +3848,9 @@ snapshots:
     dependencies:
       prismjs: 1.29.0
 
-  '@astrojs/tailwind@5.1.4(astro@5.1.2(@types/node@20.10.4)(jiti@1.21.0)(rollup@4.29.1)(terser@5.26.0)(typescript@5.3.3)(yaml@2.7.0))(tailwindcss@3.3.6)':
+  '@astrojs/tailwind@5.1.4(astro@5.1.2(@types/node@20.10.4)(@upstash/redis@1.34.3)(jiti@1.21.0)(rollup@4.29.1)(terser@5.26.0)(typescript@5.3.3)(yaml@2.7.0))(tailwindcss@3.3.6)':
     dependencies:
-      astro: 5.1.2(@types/node@20.10.4)(jiti@1.21.0)(rollup@4.29.1)(terser@5.26.0)(typescript@5.3.3)(yaml@2.7.0)
+      astro: 5.1.2(@types/node@20.10.4)(@upstash/redis@1.34.3)(jiti@1.21.0)(rollup@4.29.1)(terser@5.26.0)(typescript@5.3.3)(yaml@2.7.0)
       autoprefixer: 10.4.20(postcss@8.4.49)
       postcss: 8.4.49
       postcss-load-config: 4.0.2(postcss@8.4.49)
@@ -3861,13 +3870,13 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/vercel@8.0.1(astro@5.1.2(@types/node@20.10.4)(jiti@1.21.0)(rollup@4.29.1)(terser@5.26.0)(typescript@5.3.3)(yaml@2.7.0))(rollup@4.29.1)':
+  '@astrojs/vercel@8.0.1(astro@5.1.2(@types/node@20.10.4)(@upstash/redis@1.34.3)(jiti@1.21.0)(rollup@4.29.1)(terser@5.26.0)(typescript@5.3.3)(yaml@2.7.0))(rollup@4.29.1)':
     dependencies:
       '@astrojs/internal-helpers': 0.4.2
       '@vercel/analytics': 1.4.1
       '@vercel/edge': 1.2.0
       '@vercel/nft': 0.27.10(rollup@4.29.1)
-      astro: 5.1.2(@types/node@20.10.4)(jiti@1.21.0)(rollup@4.29.1)(terser@5.26.0)(typescript@5.3.3)(yaml@2.7.0)
+      astro: 5.1.2(@types/node@20.10.4)(@upstash/redis@1.34.3)(jiti@1.21.0)(rollup@4.29.1)(terser@5.26.0)(typescript@5.3.3)(yaml@2.7.0)
       esbuild: 0.24.2
       fast-glob: 3.3.2
     transitivePeerDependencies:
@@ -4822,6 +4831,10 @@ snapshots:
 
   '@ungap/structured-clone@1.2.0': {}
 
+  '@upstash/redis@1.34.3':
+    dependencies:
+      crypto-js: 4.2.0
+
   '@vercel/analytics@1.4.1': {}
 
   '@vercel/edge@1.2.0': {}
@@ -4989,7 +5002,7 @@ snapshots:
       resolve-pkg: 2.0.0
       svgo: 2.8.0
 
-  astro@5.1.2(@types/node@20.10.4)(jiti@1.21.0)(rollup@4.29.1)(terser@5.26.0)(typescript@5.3.3)(yaml@2.7.0):
+  astro@5.1.2(@types/node@20.10.4)(@upstash/redis@1.34.3)(jiti@1.21.0)(rollup@4.29.1)(terser@5.26.0)(typescript@5.3.3)(yaml@2.7.0):
     dependencies:
       '@astrojs/compiler': 2.10.3
       '@astrojs/internal-helpers': 0.4.2
@@ -5039,7 +5052,7 @@ snapshots:
       tsconfck: 3.1.4(typescript@5.3.3)
       ultrahtml: 1.5.3
       unist-util-visit: 5.0.0
-      unstorage: 1.14.4
+      unstorage: 1.14.4(@upstash/redis@1.34.3)
       vfile: 6.0.3
       vite: 6.0.7(@types/node@20.10.4)(jiti@1.21.0)(terser@5.26.0)(yaml@2.7.0)
       vitefu: 1.0.5(vite@6.0.7(@types/node@20.10.4)(jiti@1.21.0)(terser@5.26.0)(yaml@2.7.0))
@@ -5236,7 +5249,7 @@ snapshots:
   chokidar@3.6.0:
     dependencies:
       anymatch: 3.1.3
-      braces: 3.0.2
+      braces: 3.0.3
       glob-parent: 5.1.2
       is-binary-path: 2.1.0
       is-glob: 4.0.3
@@ -7666,7 +7679,7 @@ snapshots:
       unist-util-is: 6.0.0
       unist-util-visit-parents: 6.0.1
 
-  unstorage@1.14.4:
+  unstorage@1.14.4(@upstash/redis@1.34.3):
     dependencies:
       anymatch: 3.1.3
       chokidar: 3.6.0
@@ -7676,6 +7689,8 @@ snapshots:
       node-fetch-native: 1.6.4
       ofetch: 1.4.1
       ufo: 1.5.4
+    optionalDependencies:
+      '@upstash/redis': 1.34.3
 
   update-browserslist-db@1.0.13(browserslist@4.22.2):
     dependencies:
