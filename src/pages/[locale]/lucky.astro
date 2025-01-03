@@ -6,29 +6,12 @@ import ThreeCanvas from "../../components/ThreeCanvas.astro"
 import { generateStaticPaths, useI18n } from "../../i18n/ui"
 import Layout from "../../layouts/Layout.astro"
 
+import LuckyNumber from "../../components/LuckyNumber.astro"
 const { lang } = useI18n(Astro.url)
 
 const { useI18Text: t } = useI18n(Astro.url)
 
-export const prerender = false
 export const getStaticPaths = generateStaticPaths
-
-const curDay = new Date().toISOString().split("T")[0]
-let lastDay = await Astro.session?.get("last_day")
-let rng
-
-if (!lastDay || lastDay !== curDay) {
-  lastDay = curDay
-  Astro.session?.set("last_day", lastDay, {
-    ttl: 1000 * 60 * 60 * 24, // 1 day
-  })
-
-  rng = Math.round(Math.random() * 10000)
-
-  await Astro.session?.set("lucky_number", rng)
-} else {
-  rng = await Astro.session?.get("lucky_number")
-}
 ---
 
 <Layout title={t("nav.home")}>
@@ -40,14 +23,11 @@ if (!lastDay || lastDay !== curDay) {
         >
           {t("lucky.yournumber")}
         </span>
-        <a
-          href={getRelativeLocaleUrl(lang, "/lucky")}
-          data-astro-history="replace"
-        >
-          <h3 class="text-light-muted dark:text-dark-muted" data-rng>
-            {rng}
-          </h3>
-        </a>
+        <h3 class="text-light-muted dark:text-dark-muted">
+          <LuckyNumber server:defer>
+            <span slot="fallback" class="animate-pulse"> Calculating...</span>
+          </LuckyNumber>
+        </h3>
       </div>
       <SeeAlso />
       <span class="absolute bottom-8 right-8">

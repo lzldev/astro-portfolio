@@ -9,6 +9,7 @@ import Layout from "../../layouts/Layout.astro"
 const { useI18Text: t } = useI18n(Astro.url)
 
 export const getStaticPaths = generateStaticPaths
+export const prerender = false
 ---
 
 <Layout title={t("nav.home")}>

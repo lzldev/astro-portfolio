@@ -5,7 +5,7 @@ import {
   useI18n,
 } from "../i18n/ui"
 
-import { getRelativeLocaleUrl } from "astro:i18n"
+import { getAbsoluteLocaleUrl, getRelativeLocaleUrl } from "astro:i18n"
 import { useTranslations } from "../i18n/utils"
 
 const { lang } = useI18n(Astro.url)
@@ -30,7 +30,7 @@ const {
 
 <a
   class="group/link absolute bottom-8 left-8 tracking-tighter"
-  href={getRelativeLocaleUrl(nextLang, "/lucky")}
+  href={getRelativeLocaleUrl(nextLang, ".")}
 >
   {seeAlsoText}
   <span

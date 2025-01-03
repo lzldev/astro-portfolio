@@ -1,6 +1,6 @@
 import { loadEnv } from "vite"
 import { defineConfig } from "astro/config"
-import vercel from "@astrojs/vercel/static"
+import vercel from "@astrojs/vercel"
 import tailwind from "@astrojs/tailwind"
 import preact from "@astrojs/preact"
 
@@ -11,11 +11,6 @@ const { KV_REST_API_URL, KV_REST_API_TOKEN } = loadEnv(
   process.cwd(),
   "",
 )
-
-console.log("options", {
-  url: KV_REST_API_URL,
-  token: KV_REST_API_TOKEN,
-})
 
 // https://astro.build/config
 export default defineConfig({
@@ -40,7 +35,6 @@ export default defineConfig({
     defaultLocale: "pt-br",
     locales: ["en", "pt-br"],
     routing: {
-      prefixDefaultLocale: true,
       strategy: "pathname",
     },
   },
